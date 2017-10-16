@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class DZRAlbum;
 @interface DZRRequestService : NSObject
 
 - (void)searchArtistWithText:(NSString *)text
                   completion:(void(^)(NSArray *result, NSError *error))completion;
 
+- (void)searchFirstAlbumWithArtistId:(NSString *)artistId
+                          completion:(void(^)(DZRAlbum *album, NSError *error))completion;
 @end

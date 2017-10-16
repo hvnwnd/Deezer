@@ -19,6 +19,7 @@
 		740CE23D1F94F5E6000A2EB2 /* UIImageView+Async.m in Sources */ = {isa = PBXBuildFile; fileRef = 740CE23C1F94F5E6000A2EB2 /* UIImageView+Async.m */; };
 		740CE2401F94F682000A2EB2 /* DZRRequestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 740CE23F1F94F682000A2EB2 /* DZRRequestService.m */; };
 		740CE2451F94FD91000A2EB2 /* DZRArtistDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 740CE2441F94FD91000A2EB2 /* DZRArtistDetailViewController.m */; };
+		740CE2481F9508C0000A2EB2 /* DZRAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 740CE2471F9508C0000A2EB2 /* DZRAlbum.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		740CE23F1F94F682000A2EB2 /* DZRRequestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZRRequestService.m; sourceTree = "<group>"; };
 		740CE2431F94FD91000A2EB2 /* DZRArtistDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZRArtistDetailViewController.h; sourceTree = "<group>"; };
 		740CE2441F94FD91000A2EB2 /* DZRArtistDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZRArtistDetailViewController.m; sourceTree = "<group>"; };
+		740CE2461F9508C0000A2EB2 /* DZRAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZRAlbum.h; sourceTree = "<group>"; };
+		740CE2471F9508C0000A2EB2 /* DZRAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZRAlbum.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +103,7 @@
 				5C1A7D871A6558BB00092761 /* AppDelegate.m */,
 				740CE23E1F94F682000A2EB2 /* DZRRequestService.h */,
 				740CE23F1F94F682000A2EB2 /* DZRRequestService.m */,
-				5C2E66181A67C07E00607EC5 /* DZRArtist.h */,
-				5C2E66191A67C07E00607EC5 /* DZRArtist.m */,
+				740CE2491F9508C7000A2EB2 /* Model */,
 				5C06C22D1A6E987F0051EF03 /* DZRArtistCollectionViewCell.h */,
 				5C06C22E1A6E987F0051EF03 /* DZRArtistCollectionViewCell.m */,
 				5C1A7DA81A65897200092761 /* DZRArtistSearchViewController.h */,
@@ -142,6 +144,17 @@
 				5C1A7D9D1A6558BC00092761 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		740CE2491F9508C7000A2EB2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5C2E66181A67C07E00607EC5 /* DZRArtist.h */,
+				5C2E66191A67C07E00607EC5 /* DZRArtist.m */,
+				740CE2461F9508C0000A2EB2 /* DZRAlbum.h */,
+				740CE2471F9508C0000A2EB2 /* DZRAlbum.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C1A7DAA1A65897200092761 /* DZRArtistSearchViewController.m in Sources */,
+				740CE2481F9508C0000A2EB2 /* DZRAlbum.m in Sources */,
 				5C1A7D881A6558BB00092761 /* AppDelegate.m in Sources */,
 				740CE2401F94F682000A2EB2 /* DZRRequestService.m in Sources */,
 				740CE2451F94FD91000A2EB2 /* DZRArtistDetailViewController.m in Sources */,

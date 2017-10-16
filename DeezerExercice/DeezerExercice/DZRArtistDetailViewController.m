@@ -7,8 +7,15 @@
 //
 
 #import "DZRArtistDetailViewController.h"
+#import "DZRRequestService.h"
+#import "DZRAlbum.h"
+#import "UIImageView+Async.h"
 
 @interface DZRArtistDetailViewController ()
+@property (nonatomic, weak) IBOutlet UILabel *tableViewTitle;
+@property (nonatomic, weak) IBOutlet UIImageView *cover;
+
+@property (nonatomic) DZRRequestService *requestService;
 
 @end
 
@@ -16,12 +23,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    __weak typeof (self) weakSelf = self;
+    [self.requestService searchFirstAlbumWithArtistId:self.artistId completion:^(DZRAlbum *album, NSError *error) {
+        weakSelf.tableViewTitle.text = album.albumTitle;
+        [weakSelf.cover setImageUrl:album.albumCoverUrl];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (DZRRequestService *)requestService{
+    if (!_requestService)
+    {
+        _requestService = [DZRRequestService new];
+    }
+    return _requestService;
 }
 
 /*
@@ -33,5 +53,20 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 0;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
 
 @end

@@ -10,4 +10,5 @@
 
 @interface DZRArtistDetailViewController : UIViewController
 
+@property (nonatomic) NSString *artistId;
 @end

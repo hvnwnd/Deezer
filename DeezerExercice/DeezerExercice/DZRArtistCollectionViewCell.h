@@ -8,6 +8,10 @@
 
 @interface DZRArtistCollectionViewCell : UICollectionViewCell
 
-- (void)updateWithName:(NSString *)name
+@property (nonatomic, readonly) NSString *artistId;
+@property (nonatomic, readonly) NSString *artistName;
+
+- (void)updateWithArtistId:(NSString *)artistId
+                      name:(NSString *)name
               imageUrl:(NSString *)imageUrl;
 @end

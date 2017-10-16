@@ -5,6 +5,7 @@
 //
 
 #import "DZRArtistSearchViewController.h"
+#import "DZRArtistDetailViewController.h"
 #import "DZRArtistCollectionViewCell.h"
 #import "DZRRequestService.h"
 #import "DZRArtist.h"
@@ -32,15 +33,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"showArtist"]){
+        DZRArtistDetailViewController *detailViewController = (DZRArtistDetailViewController *)segue.destinationViewController;
+        DZRArtistCollectionViewCell *cell = (DZRArtistCollectionViewCell *)sender;
+        detailViewController.artistId = cell.artistId;
+        detailViewController.title = cell.
+    }
 }
-*/
+
 - (DZRRequestService *)requestService{
     if (!_requestService)
     {
@@ -98,7 +103,9 @@
 
     DZRArtistCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     DZRArtist *artist = self.artists[indexPath.row];
-    [cell updateWithName:artist.artistName imageUrl:artist.artistPictureUrl];
+    [cell updateWithArtistId:artist.artistIdentifier
+                        name:artist.artistName
+                    imageUrl:artist.artistPictureUrl];
 
     return cell;
 }

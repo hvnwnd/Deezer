@@ -9,9 +9,12 @@
 @interface DZRArtistCollectionViewCell()
 
 @property (weak, nonatomic) IBOutlet UIImageView *artistImage;
-@property (weak, nonatomic) IBOutlet UILabel *artistName;
+@property (weak, nonatomic) IBOutlet UILabel *artistNameLabel;
+@property (nonatomic, readwrite) NSString *artistId;
+@property (nonatomic, readwrite) NSString *artistName;
 
 @end
+
 @implementation DZRArtistCollectionViewCell
 
 - (void)prepareForReuse
@@ -20,10 +23,13 @@
     self.artistImage.image = nil;
 }
 
-- (void)updateWithName:(NSString *)name
-              imageUrl:(NSString *)imageUrl
+- (void)updateWithArtistId:(NSString *)artistId
+                      name:(NSString *)name
+                  imageUrl:(NSString *)imageUrl
 {
-    self.artistName.text = name;
+    self.artistId = artistId;
+    self.artistName = name;
+    self.artistNameLabel.text = name;
     [self.artistImage setImageUrl:imageUrl];
 }
 
