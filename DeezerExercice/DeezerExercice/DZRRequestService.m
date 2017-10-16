@@ -9,6 +9,7 @@
 #import "DZRRequestService.h"
 #import "DZRArtist.h"
 #import "DZRAlbum.h"
+#import "DZRTrack.h"
 
 NSString *const kDZRBaseURL = @"https://api.deezer.com/";
 
@@ -57,7 +58,7 @@ NSString *const kDZRBaseURL = @"https://api.deezer.com/";
 
 }
 
-- (void)searchFirstAlbumWithArtistId:(NSString *)artistId
+- (void)fetchFirstAlbumWithArtistId:(NSString *)artistId
                           completion:(void(^)(DZRAlbum *album, NSError *error))completion
 {
     NSString *urlRequest = [NSString stringWithFormat:@"%@/artist/%@/albums?limit=1", kDZRBaseURL, artistId];
@@ -78,14 +79,13 @@ NSString *const kDZRBaseURL = @"https://api.deezer.com/";
                            }];
 }
 
-- (void)searchAlbumMusicWithArtistId:(NSString *)albumId
-                          completion:(void(^)(NSArray *songList, NSError *error))completion
+- (void)fetchAlbumTracksWithAlbumId:(NSString *)albumId
+                         completion:(void(^)(NSArray *trackList, NSError *error))completion
 {
     
     //http://api.deezer.com/album/302127
     NSString *urlRequest = [NSString stringWithFormat:@"%@/album/%@", kDZRBaseURL, albumId];
-
-    NSURLRequest *APIRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:albumId]];
+    NSURLRequest *APIRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlRequest]];
     [NSURLConnection sendAsynchronousRequest:APIRequest
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -97,14 +97,14 @@ NSString *const kDZRBaseURL = @"https://api.deezer.com/";
                                                                                              error:&connectionError];
                                    NSLog(@"%@", [retData objectForKey:@"data"]);
                                    
-                                   NSArray *artistsData = [retData objectForKey:@"data"];
-                                   NSMutableArray *artists = [NSMutableArray array];
-                                   for (NSDictionary *artistDict in artistsData) {
-                                       DZRArtist *artist = [[DZRArtist alloc] initWithDictionary:artistDict];
-                                       [artists addObject:artist];
+                                   NSArray *tracksData = retData[@"tracks"][@"data"];
+                                   NSMutableArray *tracks = [NSMutableArray array];
+                                   for (NSDictionary *trackDict in tracksData) {
+                                       DZRTrack *track = [[DZRTrack alloc] initWithDictionary:trackDict];
+                                       [tracks addObject:track];
                                    }
                                    
-                                   completion(artists, nil);
+                                   completion(tracks, nil);
                                }
                            }];
 

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DZRArtistDetailViewController : UIViewController
+@interface DZRArtistDetailViewController : UITableViewController
 
 @property (nonatomic) NSString *artistId;
 @end

@@ -9,12 +9,16 @@
 #import "DZRArtistDetailViewController.h"
 #import "DZRRequestService.h"
 #import "DZRAlbum.h"
+#import "DZRTrack.h"
+#import "DZRTrackTableViewCell.h"
+#import "DZRPlayer.h"
 #import "UIImageView+Async.h"
+#import "UIViewController+Error.h"
 
 @interface DZRArtistDetailViewController ()
 @property (nonatomic, weak) IBOutlet UILabel *tableViewTitle;
 @property (nonatomic, weak) IBOutlet UIImageView *cover;
-
+@property (nonatomic) NSArray *tracks;
 @property (nonatomic) DZRRequestService *requestService;
 
 @end
@@ -24,11 +28,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.estimatedRowHeight = 80.0;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
     __weak typeof (self) weakSelf = self;
-    [self.requestService searchFirstAlbumWithArtistId:self.artistId completion:^(DZRAlbum *album, NSError *error) {
+    [self.requestService fetchFirstAlbumWithArtistId:self.artistId completion:^(DZRAlbum *album, NSError *error) {
         weakSelf.tableViewTitle.text = album.albumTitle;
         [weakSelf.cover setImageUrl:album.albumCoverUrl];
+        
+        [weakSelf.requestService fetchAlbumTracksWithAlbumId:album.albumIdentifier completion:^(NSArray *trackList, NSError *error) {
+            if (trackList.count){
+                weakSelf.tracks = trackList;
+                [weakSelf.tableView reloadData];
+            }else{
+                [weakSelf showError:error];
+            }
+        }];
     }];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,29 +62,27 @@
     return _requestService;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return self.tracks.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    static NSString *cellIdentifier = @"DZRTrackTableViewCellIdentifier";
+    
+    DZRTrackTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    DZRTrack *track = self.tracks[indexPath.row];
+    [cell updateWithTitle:track.trackTitle];
+    
+    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    DZRTrack *track = self.tracks[indexPath.row];
+    [[DZRPlayer sharedPlayer] playWithUrl:track.trackUrl];
 }
 
 @end

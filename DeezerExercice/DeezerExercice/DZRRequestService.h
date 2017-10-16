@@ -14,6 +14,10 @@
 - (void)searchArtistWithText:(NSString *)text
                   completion:(void(^)(NSArray *result, NSError *error))completion;
 
-- (void)searchFirstAlbumWithArtistId:(NSString *)artistId
+- (void)fetchFirstAlbumWithArtistId:(NSString *)artistId
                           completion:(void(^)(DZRAlbum *album, NSError *error))completion;
+
+- (void)fetchAlbumTracksWithAlbumId:(NSString *)albumId
+                         completion:(void(^)(NSArray *trackList, NSError *error))completion;
+
 @end

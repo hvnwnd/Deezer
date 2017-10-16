@@ -9,6 +9,7 @@
 #import "DZRArtistCollectionViewCell.h"
 #import "DZRRequestService.h"
 #import "DZRArtist.h"
+#import "UIViewController+Error.h"
 
 @interface DZRArtistSearchViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate>
 
@@ -24,7 +25,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self.searchBar becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,7 +59,8 @@
 
 - (void)searchArtistsWithName:(NSString *)name {
     __weak typeof (self) weakSelf = self;
-    [self.requestService searchArtistWithText:name completion:^(NSArray *result, NSError *error) {
+    NSString *escapedString = [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [self.requestService searchArtistWithText:escapedString completion:^(NSArray *result, NSError *error) {
         if (result){
             weakSelf.artists = result;
             [weakSelf.collectionView reloadData];
@@ -68,14 +70,6 @@
     }];
 }
 
-- (void)showError:(NSError *)error{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                    message:[error localizedDescription]
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
-}
 
 #pragma - UISearchBarDelegate
 
