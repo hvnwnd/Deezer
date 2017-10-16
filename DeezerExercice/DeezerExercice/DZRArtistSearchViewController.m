@@ -42,7 +42,7 @@
         DZRArtistDetailViewController *detailViewController = (DZRArtistDetailViewController *)segue.destinationViewController;
         DZRArtistCollectionViewCell *cell = (DZRArtistCollectionViewCell *)sender;
         detailViewController.artistId = cell.artistId;
-        detailViewController.title = cell.
+        detailViewController.title = cell.artistName;
     }
 }
 
