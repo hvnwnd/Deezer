@@ -1,0 +1,18 @@
+//
+//  DZRArtist.h
+//  DeezerExercice
+//  Copyright (c) 2015 Deezer. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface DZRArtist : NSObject
+
+@property (nonatomic, strong) NSString *artistIdentifier;
+@property (nonatomic, strong) NSString *artistName;
+@property (nonatomic, strong) NSString *artistPictureUrl;
+@property (nonatomic, strong) NSString *artistBigPictureUrl;
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
+@end
