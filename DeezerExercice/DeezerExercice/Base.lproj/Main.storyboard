@@ -192,6 +192,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="playBack" destination="rhv-aR-fdY" id="Inh-3f-mAF"/>
                                     <outlet property="trackTitle" destination="Jsm-RT-FjK" id="DAq-PW-gQN"/>
                                 </connections>
                             </tableViewCell>

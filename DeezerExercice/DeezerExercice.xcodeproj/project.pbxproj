@@ -19,6 +19,7 @@
 		740CE2401F94F682000A2EB2 /* DZRRequestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 740CE23F1F94F682000A2EB2 /* DZRRequestService.m */; };
 		740CE2451F94FD91000A2EB2 /* DZRArtistDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 740CE2441F94FD91000A2EB2 /* DZRArtistDetailViewController.m */; };
 		740CE2481F9508C0000A2EB2 /* DZRAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 740CE2471F9508C0000A2EB2 /* DZRAlbum.m */; };
+		FC1FE1921F955F3D003A3FF1 /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = FC1FE1911F955F3D003A3FF1 /* TODO */; };
 		FC8F3EA01F95514C00E59B6D /* UIViewController+Error.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8F3E9F1F95514C00E59B6D /* UIViewController+Error.m */; };
 		FC8F3EA31F95529E00E59B6D /* DZRPlayBack.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8F3EA21F95529E00E59B6D /* DZRPlayBack.m */; };
 		FC8F3EA41F95540900E59B6D /* UIImageView+Async.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8F3E9D1F95512C00E59B6D /* UIImageView+Async.m */; };
@@ -61,6 +62,7 @@
 		740CE2441F94FD91000A2EB2 /* DZRArtistDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZRArtistDetailViewController.m; sourceTree = "<group>"; };
 		740CE2461F9508C0000A2EB2 /* DZRAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZRAlbum.h; sourceTree = "<group>"; };
 		740CE2471F9508C0000A2EB2 /* DZRAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZRAlbum.m; sourceTree = "<group>"; };
+		FC1FE1911F955F3D003A3FF1 /* TODO */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		FC8F3E9C1F95512C00E59B6D /* UIImageView+Async.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Async.h"; sourceTree = "<group>"; };
 		FC8F3E9D1F95512C00E59B6D /* UIImageView+Async.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Async.m"; sourceTree = "<group>"; };
 		FC8F3E9E1F95514C00E59B6D /* UIViewController+Error.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Error.h"; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		5C1A7D811A6558BB00092761 /* DeezerExercice */ = {
 			isa = PBXGroup;
 			children = (
+				FC1FE1911F955F3D003A3FF1 /* TODO */,
 				5C1A7D861A6558BB00092761 /* AppDelegate.h */,
 				5C1A7D871A6558BB00092761 /* AppDelegate.m */,
 				740CE23E1F94F682000A2EB2 /* DZRRequestService.h */,
@@ -272,6 +275,7 @@
 			files = (
 				5C1A7D8E1A6558BB00092761 /* Main.storyboard in Resources */,
 				5C1A7D931A6558BB00092761 /* LaunchScreen.xib in Resources */,
+				FC1FE1921F955F3D003A3FF1 /* TODO in Resources */,
 				5C1A7D901A6558BB00092761 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

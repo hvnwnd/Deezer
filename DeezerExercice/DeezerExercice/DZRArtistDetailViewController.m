@@ -15,7 +15,9 @@
 #import "UIImageView+Async.h"
 #import "UIViewController+Error.h"
 
-@interface DZRArtistDetailViewController ()
+CGFloat const kDZRArtistDetailViewControllerCellHeight = 80.0;
+
+@interface DZRArtistDetailViewController () <DZRPlayerDelegate>
 @property (nonatomic, weak) IBOutlet UILabel *tableViewTitle;
 @property (nonatomic, weak) IBOutlet UIImageView *cover;
 @property (nonatomic) NSArray *tracks;
@@ -28,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.estimatedRowHeight = 80.0;
+    self.tableView.estimatedRowHeight = kDZRArtistDetailViewControllerCellHeight;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     __weak typeof (self) weakSelf = self;
@@ -45,8 +47,6 @@
             }
         }];
     }];
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,6 +83,19 @@
 {
     DZRTrack *track = self.tracks[indexPath.row];
     [[DZRPlayer sharedPlayer] playWithUrl:track.trackUrl];
+    
+    [DZRPlayer sharedPlayer].delegate = self;
+    self.navigationItem.rightBarButtonItem =  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(pausePlayer:)];
 }
 
+- (void)pausePlayer:(id)sender{
+    [[DZRPlayer sharedPlayer] stop];
+    self.navigationItem.rightBarButtonItem = nil;
+}
+
+- (void)DZRPlayerWillBegin:(DZRPlayer *)player duration:(NSTimeInterval)duration{
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    DZRTrackTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    [cell playWithDuration:duration];
+}
 @end

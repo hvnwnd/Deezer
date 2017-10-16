@@ -10,8 +10,7 @@
 
 @interface DZRTrackTableViewCell : UITableViewCell
 
-
 - (void)updateWithTitle:(NSString *)title;
-- (void)play;
+- (void)playWithDuration:(NSTimeInterval)duration;
 
 @end

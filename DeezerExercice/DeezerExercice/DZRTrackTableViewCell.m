@@ -7,10 +7,12 @@
 //
 
 #import "DZRTrackTableViewCell.h"
+#import "DZRPlayBack.h"
 
 @interface DZRTrackTableViewCell ()
 
 @property (nonatomic, weak) IBOutlet UILabel *trackTitle;
+@property (nonatomic, weak) IBOutlet DZRPlayBack *playBack;
 
 @end
 @implementation DZRTrackTableViewCell
@@ -26,13 +28,12 @@
     // Configure the view for the selected state
 }
 
-- (void)play
-{
-    
-}
-
 - (void)updateWithTitle:(NSString *)title
 {
     self.trackTitle.text = title;
+}
+
+- (void)playWithDuration:(NSTimeInterval)duration {
+    [self.playBack strokeWithDuration:duration];
 }
 @end

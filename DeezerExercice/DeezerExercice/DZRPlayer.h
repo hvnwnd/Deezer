@@ -8,7 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+@class DZRPlayer;
+@protocol DZRPlayerDelegate <NSObject>
+
+- (void)DZRPlayerWillBegin:(DZRPlayer *)player duration:(NSTimeInterval)duration;
+
+@end
 @interface DZRPlayer : NSObject
+
+@property (nonatomic, weak) id<DZRPlayerDelegate> delegate;
 
 + (instancetype)sharedPlayer;
 

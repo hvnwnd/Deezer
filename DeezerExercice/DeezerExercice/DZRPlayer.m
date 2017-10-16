@@ -44,6 +44,9 @@
         NSError *error = nil;
 
         self.audioPlayer = [[AVAudioPlayer alloc] initWithData:data error:&error];
+        if (self.delegate){
+            [self.delegate DZRPlayerWillBegin:self duration:self.audioPlayer.duration];
+        }
         [self.audioPlayer play];
     }];
 }

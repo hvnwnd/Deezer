@@ -10,4 +10,6 @@
 
 @interface DZRPlayBack : UIView
 
+- (void)strokeWithDuration:(double)duration;
+
 @end
