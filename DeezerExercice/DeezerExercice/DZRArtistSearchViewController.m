@@ -97,7 +97,7 @@
 
     DZRArtistCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     DZRArtist *artist = self.artists[indexPath.row];
-    [cell updateWithArtistId:artist.artistIdentifier
+    [cell updateWithArtistId:artist.identifier
                         name:artist.artistName
                     imageUrl:artist.artistPictureUrl];
 

@@ -7,13 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DZRParsableObject.h"
 
-@interface DZRTrack : NSObject
+@interface DZRTrack : DZRParsableObject
 
-@property (nonatomic) NSString *trackIdentifier;
 @property (nonatomic) NSString *trackTitle;
 @property (nonatomic) NSString *trackUrl;
-
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

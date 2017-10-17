@@ -11,13 +11,17 @@
 @implementation DZRTrack
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
-    self = [super init];
+    self = [super initWithDictionary:dictionary];
     if (self) {
-        _trackIdentifier = dictionary[@"id"];
         _trackTitle = dictionary[@"title"];
         _trackUrl = dictionary[@"preview"];
     }
     return self;
+}
+
++ (NSString *)serviceName
+{
+    return @"track";
 }
 
 @end

@@ -10,6 +10,7 @@
 #import "DZRArtist.h"
 #import "DZRAlbum.h"
 #import "DZRTrack.h"
+#import "DZRParsable.h"
 
 NSString *const kDZRBaseURL = @"https://api.deezer.com/";
 
@@ -29,8 +30,16 @@ NSString *const kDZRBaseURL = @"https://api.deezer.com/";
     return self;
 }
 
+//- (void)search:(id<DZRParsable>)object keyWord:(NSString *)keyword
+//    completion:(void(^)(NSArray *result, NSError *error))completion
+//{
+//    [object serviceName];
+//}
+
 - (void)searchArtistWithText:(NSString *)text completion:(void(^)(NSArray *result, NSError *error))completion
 {
+//    [self search:[DZRArtist serviceName] keyWord:<#(NSString *)#> completion:<#^(NSArray *result, NSError *error)completion#>]
+    
     NSString *urlRequest = [NSString stringWithFormat:@"%@/search/artist?q=%@", kDZRBaseURL, text];
     NSURLRequest *APIRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlRequest]];
     

@@ -5,14 +5,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DZRParsableObject.h"
 
-@interface DZRArtist : NSObject
+@interface DZRArtist : DZRParsableObject
 
-@property (nonatomic, strong) NSString *artistIdentifier;
 @property (nonatomic, strong) NSString *artistName;
 @property (nonatomic, strong) NSString *artistPictureUrl;
-@property (nonatomic, strong) NSString *artistBigPictureUrl;
-
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

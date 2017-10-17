@@ -9,13 +9,17 @@
 @implementation DZRArtist
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
-    self = [super init];
+    self = [super initWithDictionary:dictionary];
     if (self) {
         _artistName = dictionary[@"name"];
-        _artistIdentifier = dictionary[@"id"];
         _artistPictureUrl = dictionary[@"picture"];
-        _artistBigPictureUrl = dictionary[@"picture_big"];
     }
     return self;
 }
+
++ (NSString *)serviceName
+{
+    return @"artist";
+}
+
 @end

@@ -11,13 +11,17 @@
 @implementation DZRAlbum
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
-    self = [super init];
+    self = [super initWithDictionary:dictionary];
     if (self) {
-        _albumIdentifier = dictionary[@"id"];
         _albumTitle = dictionary[@"title"];
         _albumCoverUrl = dictionary[@"cover"];
     }
     return self;
+}
+
++ (NSString *)serviceName
+{
+    return @"album";
 }
 
 @end

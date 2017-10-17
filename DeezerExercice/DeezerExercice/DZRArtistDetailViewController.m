@@ -38,7 +38,7 @@ CGFloat const kDZRArtistDetailViewControllerCellHeight = 80.0;
         weakSelf.tableViewTitle.text = album.albumTitle;
         [weakSelf.cover setImageUrl:album.albumCoverUrl];
         
-        [weakSelf.requestService fetchAlbumTracksWithAlbumId:album.albumIdentifier completion:^(NSArray *trackList, NSError *error) {
+        [weakSelf.requestService fetchAlbumTracksWithAlbumId:album.identifier completion:^(NSArray *trackList, NSError *error) {
             if (trackList.count){
                 weakSelf.tracks = trackList;
                 [weakSelf.tableView reloadData];

@@ -7,13 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DZRParsableObject.h"
 
-@interface DZRAlbum : NSObject
+@interface DZRAlbum : DZRParsableObject
 
-@property (nonatomic, strong) NSString *albumIdentifier;
 @property (nonatomic, strong) NSString *albumTitle;
 @property (nonatomic, strong) NSString *albumCoverUrl;
-
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

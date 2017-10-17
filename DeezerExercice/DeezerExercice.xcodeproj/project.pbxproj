@@ -19,6 +19,7 @@
 		740CE2401F94F682000A2EB2 /* DZRRequestService.m in Sources */ = {isa = PBXBuildFile; fileRef = 740CE23F1F94F682000A2EB2 /* DZRRequestService.m */; };
 		740CE2451F94FD91000A2EB2 /* DZRArtistDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 740CE2441F94FD91000A2EB2 /* DZRArtistDetailViewController.m */; };
 		740CE2481F9508C0000A2EB2 /* DZRAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 740CE2471F9508C0000A2EB2 /* DZRAlbum.m */; };
+		741B2B011F9620CC00863B36 /* DZRParsableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B2B001F9620CC00863B36 /* DZRParsableObject.m */; };
 		FC1FE1921F955F3D003A3FF1 /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = FC1FE1911F955F3D003A3FF1 /* TODO */; };
 		FC8F3EA01F95514C00E59B6D /* UIViewController+Error.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8F3E9F1F95514C00E59B6D /* UIViewController+Error.m */; };
 		FC8F3EA31F95529E00E59B6D /* DZRPlayBack.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8F3EA21F95529E00E59B6D /* DZRPlayBack.m */; };
@@ -62,6 +63,9 @@
 		740CE2441F94FD91000A2EB2 /* DZRArtistDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZRArtistDetailViewController.m; sourceTree = "<group>"; };
 		740CE2461F9508C0000A2EB2 /* DZRAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZRAlbum.h; sourceTree = "<group>"; };
 		740CE2471F9508C0000A2EB2 /* DZRAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZRAlbum.m; sourceTree = "<group>"; };
+		741B2AFF1F9620CC00863B36 /* DZRParsableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZRParsableObject.h; sourceTree = "<group>"; };
+		741B2B001F9620CC00863B36 /* DZRParsableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZRParsableObject.m; sourceTree = "<group>"; };
+		741B2B021F9620E700863B36 /* DZRParsable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZRParsable.h; sourceTree = "<group>"; };
 		FC1FE1911F955F3D003A3FF1 /* TODO */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		FC8F3E9C1F95512C00E59B6D /* UIImageView+Async.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Async.h"; sourceTree = "<group>"; };
 		FC8F3E9D1F95512C00E59B6D /* UIImageView+Async.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Async.m"; sourceTree = "<group>"; };
@@ -172,6 +176,9 @@
 		740CE2491F9508C7000A2EB2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				741B2AFF1F9620CC00863B36 /* DZRParsableObject.h */,
+				741B2B001F9620CC00863B36 /* DZRParsableObject.m */,
+				741B2B021F9620E700863B36 /* DZRParsable.h */,
 				5C2E66181A67C07E00607EC5 /* DZRArtist.h */,
 				5C2E66191A67C07E00607EC5 /* DZRArtist.m */,
 				740CE2461F9508C0000A2EB2 /* DZRAlbum.h */,
@@ -306,6 +313,7 @@
 				5C1A7D851A6558BB00092761 /* main.m in Sources */,
 				FC94FD271F9541A4000E48A2 /* DZRPlayer.m in Sources */,
 				5C06C22F1A6E987F0051EF03 /* DZRArtistCollectionViewCell.m in Sources */,
+				741B2B011F9620CC00863B36 /* DZRParsableObject.m in Sources */,
 				FC8F3EA31F95529E00E59B6D /* DZRPlayBack.m in Sources */,
 				5C2E661A1A67C07E00607EC5 /* DZRArtist.m in Sources */,
 			);
@@ -462,6 +470,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = DeezerExerciceTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeezerExercice.app/DeezerExercice";
@@ -477,6 +486,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = DeezerExerciceTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DeezerExercice.app/DeezerExercice";
