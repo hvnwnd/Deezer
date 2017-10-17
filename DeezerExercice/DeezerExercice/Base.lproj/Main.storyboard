@@ -91,7 +91,7 @@
                                         <connections>
                                             <outlet property="artistImage" destination="kKI-XC-AWa" id="b8i-GL-RMi"/>
                                             <outlet property="artistNameLabel" destination="h04-Ub-2zf" id="War-Bp-Pb9"/>
-                                            <segue destination="u9c-3n-72M" kind="show" identifier="showArtist" id="P1v-kn-BFQ"/>
+                                            <segue destination="u9c-3n-72M" kind="presentation" identifier="showArtist" id="P1v-kn-BFQ"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

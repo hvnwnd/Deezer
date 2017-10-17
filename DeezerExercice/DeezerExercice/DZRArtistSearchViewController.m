@@ -11,12 +11,15 @@
 #import "DZRArtist.h"
 #import "UIViewController+Error.h"
 #import "DZRLoadingView.h"
+#import "DZRTransitionManager.h"
 
 @interface DZRArtistSearchViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, weak) IBOutlet DZRLoadingView *loadingView;
+
+@property (nonatomic) DZRTransitionManager *transitionManager;
 
 @property (nonatomic, strong) NSArray *artists;
 @property (nonatomic) DZRRequestService *requestService;
@@ -38,6 +41,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (DZRTransitionManager *)transitionManager{
+    if (!_transitionManager){
+        _transitionManager = [DZRTransitionManager new];
+    }
+    return _transitionManager;
+}
 
 #pragma mark - Navigation
 
@@ -48,6 +57,8 @@
         DZRArtistCollectionViewCell *cell = (DZRArtistCollectionViewCell *)sender;
         detailViewController.artistId = cell.artistId;
         detailViewController.title = cell.artistName;
+        
+        detailViewController.transitioningDelegate = self.transitionManager;
     }
 }
 

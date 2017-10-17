@@ -22,6 +22,8 @@
 		741B2B011F9620CC00863B36 /* DZRParsableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B2B001F9620CC00863B36 /* DZRParsableObject.m */; };
 		741B2B041F965C0D00863B36 /* DZRLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 741B2B031F965C0D00863B36 /* DZRLoadingView.xib */; };
 		741B2B071F965C2200863B36 /* DZRLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B2B061F965C2200863B36 /* DZRLoadingView.m */; };
+		741B2B0F1F96644B00863B36 /* DZRTransitionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B2B0E1F96644B00863B36 /* DZRTransitionManager.m */; };
+		741B2B121F96660400863B36 /* DZRTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B2B111F96660400863B36 /* DZRTransitionAnimator.m */; };
 		FC1FE1921F955F3D003A3FF1 /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = FC1FE1911F955F3D003A3FF1 /* TODO */; };
 		FC8F3EA01F95514C00E59B6D /* UIViewController+Error.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8F3E9F1F95514C00E59B6D /* UIViewController+Error.m */; };
 		FC8F3EA31F95529E00E59B6D /* DZRPlayBack.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8F3EA21F95529E00E59B6D /* DZRPlayBack.m */; };
@@ -71,6 +73,10 @@
 		741B2B031F965C0D00863B36 /* DZRLoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DZRLoadingView.xib; sourceTree = "<group>"; };
 		741B2B051F965C2200863B36 /* DZRLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZRLoadingView.h; sourceTree = "<group>"; };
 		741B2B061F965C2200863B36 /* DZRLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZRLoadingView.m; sourceTree = "<group>"; };
+		741B2B0D1F96644B00863B36 /* DZRTransitionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZRTransitionManager.h; sourceTree = "<group>"; };
+		741B2B0E1F96644B00863B36 /* DZRTransitionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZRTransitionManager.m; sourceTree = "<group>"; };
+		741B2B101F96660400863B36 /* DZRTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZRTransitionAnimator.h; sourceTree = "<group>"; };
+		741B2B111F96660400863B36 /* DZRTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZRTransitionAnimator.m; sourceTree = "<group>"; };
 		FC1FE1911F955F3D003A3FF1 /* TODO */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		FC8F3E9C1F95512C00E59B6D /* UIImageView+Async.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Async.h"; sourceTree = "<group>"; };
 		FC8F3E9D1F95512C00E59B6D /* UIImageView+Async.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Async.m"; sourceTree = "<group>"; };
@@ -199,6 +205,7 @@
 				5C1A7DA91A65897200092761 /* DZRArtistSearchViewController.m */,
 				740CE2431F94FD91000A2EB2 /* DZRArtistDetailViewController.h */,
 				740CE2441F94FD91000A2EB2 /* DZRArtistDetailViewController.m */,
+				741B2B131F96660D00863B36 /* Transition */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -235,6 +242,17 @@
 				FC94FD261F9541A4000E48A2 /* DZRPlayer.m */,
 			);
 			name = Media;
+			sourceTree = "<group>";
+		};
+		741B2B131F96660D00863B36 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				741B2B0D1F96644B00863B36 /* DZRTransitionManager.h */,
+				741B2B0E1F96644B00863B36 /* DZRTransitionManager.m */,
+				741B2B101F96660400863B36 /* DZRTransitionAnimator.h */,
+				741B2B111F96660400863B36 /* DZRTransitionAnimator.m */,
+			);
+			name = Transition;
 			sourceTree = "<group>";
 		};
 		FC8F3E9B1F9550F600E59B6D /* Category */ = {
@@ -350,6 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				741B2B121F96660400863B36 /* DZRTransitionAnimator.m in Sources */,
 				5C1A7DAA1A65897200092761 /* DZRArtistSearchViewController.m in Sources */,
 				FC8F3EA01F95514C00E59B6D /* UIViewController+Error.m in Sources */,
 				740CE2481F9508C0000A2EB2 /* DZRAlbum.m in Sources */,
@@ -360,6 +379,7 @@
 				FC94FD241F95408E000E48A2 /* DZRTrack.m in Sources */,
 				FC8F3EA41F95540900E59B6D /* UIImageView+Async.m in Sources */,
 				740CE2451F94FD91000A2EB2 /* DZRArtistDetailViewController.m in Sources */,
+				741B2B0F1F96644B00863B36 /* DZRTransitionManager.m in Sources */,
 				5C1A7D851A6558BB00092761 /* main.m in Sources */,
 				FC94FD271F9541A4000E48A2 /* DZRPlayer.m in Sources */,
 				5C06C22F1A6E987F0051EF03 /* DZRArtistCollectionViewCell.m in Sources */,
@@ -489,6 +509,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = DeezerExercice/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -500,6 +521,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = DeezerExercice/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
