@@ -33,6 +33,7 @@
     [self.searchBar becomeFirstResponder];
     self.loadingView.hidden = YES;
     self.loadingView.layer.cornerRadius = 8.0;
+    self.navigationController.delegate = self.transitionManager;
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,7 +59,8 @@
         detailViewController.artistId = cell.artistId;
         detailViewController.title = cell.artistName;
         
-        detailViewController.transitioningDelegate = self.transitionManager;
+        detailViewController.navigationController.delegate = self;
+        //detailViewController.transitioningDelegate = self.transitionManager;
     }
 }
 

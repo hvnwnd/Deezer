@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DeezerExercice/DeezerExercice/DZRPlayBack.m"
-            timestampString = "529882826.832448"
+            timestampString = "529969211.345084"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
             endingLineNumber = "29"
-            landmarkName = "-strokeWithDuration:"
+            landmarkName = "-roundPath"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

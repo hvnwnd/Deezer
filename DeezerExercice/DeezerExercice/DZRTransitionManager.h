@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DZRTransitionManager : NSObject <UIViewControllerTransitioningDelegate>
+@interface DZRTransitionManager : NSObject <UINavigationControllerDelegate>
 
 @end
