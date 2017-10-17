@@ -14,7 +14,7 @@ CGFloat const kUIImageViewAnimationDuration = 0.3f;
 
 - (void)setImageUrl:(NSString *)urlString
 {
-    //TODO : Cache, loader
+    //TODO : Cache, loader, placeholder
     __weak typeof (self) weakSelf = self;
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

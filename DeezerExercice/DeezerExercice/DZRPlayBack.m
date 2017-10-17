@@ -9,37 +9,48 @@
 #import "DZRPlayBack.h"
 @import QuartzCore;
 
+@interface DZRPlayBack()
+
+@property (nonatomic, weak) CAShapeLayer *pathLayer;
+
+@end
 @implementation DZRPlayBack
 
-//+ (CALayer)layerClass{
-//    return [CAShapeLayer layer];
-//}
-- (void)drawRect:(CGRect)rect
-{
-    CGPoint centerPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
-    UIBezierPath *otherPath = [UIBezierPath bezierPathWithArcCenter:centerPoint
-                                                             radius:CGRectGetMidX(rect)
+- (UIBezierPath *)roundPath {
+    CGPoint centerPoint = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+
+    UIBezierPath *roundPath = [UIBezierPath bezierPathWithArcCenter:centerPoint
+                                                             radius:CGRectGetMidX(self.bounds) - 1.0
                                                          startAngle:-M_PI_2
                                                            endAngle:M_PI_2 * 3
                                                           clockwise:YES];
     
+    
+    return roundPath;
 }
 
-- (void)strokeWithDuration:(double)duration {
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-    animation.duration  = duration;
-    animation.fromValue = @0.0f;
-    animation.toValue   = @1.0f;
-    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    animation.removedOnCompletion = YES;
-    [self.layer addAnimation:animation forKey:@"circleAnimation"];
+- (void)animateWithDuration:(NSTimeInterval)duration{
+    CGFloat lineWidth = 2.0;
+
+    if (!self.pathLayer){
+        CAShapeLayer *layer = [CAShapeLayer layer];
+        self.pathLayer = layer;
+        layer.lineWidth = lineWidth;
+        layer.backgroundColor = [UIColor grayColor].CGColor;
+        layer.strokeColor = [UIColor redColor].CGColor;
+        layer.fillColor = nil;
+        layer.lineJoin = kCALineJoinBevel;
+        layer.path = [self roundPath].CGPath;
+        [self.layer addSublayer:layer];
+    }
+    
+    
+    CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    pathAnimation.duration = duration;
+    pathAnimation.fromValue = @(0.0f);
+    pathAnimation.toValue = @(1.0f);
+    [self.pathLayer addAnimation:pathAnimation forKey:@"strokeEnd"];
+
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end

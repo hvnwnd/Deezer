@@ -35,88 +35,82 @@ NSString *const kDZRBaseURL = @"https://api.deezer.com/";
 //{
 //    [object serviceName];
 //}
-
-- (void)searchArtistWithText:(NSString *)text completion:(void(^)(NSArray *result, NSError *error))completion
+- (void)requestWithUrl:(NSString *)url completion:(void(^)(NSDictionary *retData, NSError *error))completion
 {
-//    [self search:[DZRArtist serviceName] keyWord:<#(NSString *)#> completion:<#^(NSArray *result, NSError *error)completion#>]
-    
-    NSString *urlRequest = [NSString stringWithFormat:@"%@/search/artist?q=%@", kDZRBaseURL, text];
-    NSURLRequest *APIRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlRequest]];
-    
+    NSURLRequest *APIRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+
     [NSURLConnection sendAsynchronousRequest:APIRequest
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                                if (connectionError) {
                                    completion(nil, connectionError);
                                } else {
+                                   NSError *parseError = nil;
                                    NSDictionary *retData = [NSJSONSerialization JSONObjectWithData:data
                                                                                            options:kNilOptions
-                                                                                             error:&connectionError];
-                                   NSLog(@"%@", [retData objectForKey:@"data"]);
-                                   
-                                   NSArray *artistsData = [retData objectForKey:@"data"];
-                                   NSMutableArray *artists = [NSMutableArray array];
-                                   for (NSDictionary *artistDict in artistsData) {
-                                       DZRArtist *artist = [[DZRArtist alloc] initWithDictionary:artistDict];
-                                       [artists addObject:artist];
-                                   }
-                                   
-                                   completion(artists, nil);
+                                                                                             error:&parseError];
+                                   completion(retData, parseError);
                                }
                            }];
 
+}
+
+- (void)searchArtistWithText:(NSString *)text completion:(void(^)(NSArray<id<DZRParsable>> *result, NSError *error))completion
+{
+    NSString *escapedString = [text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *url = [NSString stringWithFormat:@"%@/search/artist?q=%@", kDZRBaseURL, escapedString];
+    
+    [self requestWithUrl:url completion:^(NSDictionary *retData, NSError *error) {
+        if (error) {
+            completion(nil, error);
+        } else {
+            NSArray *artistsData = [retData objectForKey:@"data"];
+            NSMutableArray *artists = [NSMutableArray array];
+            for (NSDictionary *artistDict in artistsData) {
+                DZRArtist *artist = [[DZRArtist alloc] initWithDictionary:artistDict];
+                [artists addObject:artist];
+            }
+            completion(artists, nil);
+        }
+    }];
+}
+
+- (void)searchClass:(Class)class withText:(NSString *)text completion:(void(^)(NSArray *result, NSError *error))completion
+{
+    
 }
 
 - (void)fetchFirstAlbumWithArtistId:(NSString *)artistId
                           completion:(void(^)(DZRAlbum *album, NSError *error))completion
 {
-    NSString *urlRequest = [NSString stringWithFormat:@"%@/artist/%@/albums?limit=1", kDZRBaseURL, artistId];
-    NSURLRequest *APIRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlRequest]];
-    [NSURLConnection sendAsynchronousRequest:APIRequest
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                               if (connectionError) {
-                                   completion(nil, connectionError);
-                               } else {
-                                   NSDictionary *retData = [NSJSONSerialization JSONObjectWithData:data
-                                                                                           options:kNilOptions
-                                                                                             error:&connectionError];
-                                   NSLog(@"%@", [retData[@"data"] firstObject]);
-                                   DZRAlbum *album = [[DZRAlbum alloc] initWithDictionary:[retData[@"data"] firstObject]];
-                                   completion(album, nil);
-                               }
-                           }];
+    NSString *url = [NSString stringWithFormat:@"%@/artist/%@/albums?limit=1", kDZRBaseURL, artistId];
+    [self requestWithUrl:url completion:^(NSDictionary *retData, NSError *error) {
+        if (error) {
+            completion(nil, error);
+        } else {
+            DZRAlbum *album = [[DZRAlbum alloc] initWithDictionary:[retData[@"data"] firstObject]];
+            completion(album, nil);
+        }
+    }];
 }
 
 - (void)fetchAlbumTracksWithAlbumId:(NSString *)albumId
                          completion:(void(^)(NSArray *trackList, NSError *error))completion
 {
-    
-    //http://api.deezer.com/album/302127
-    NSString *urlRequest = [NSString stringWithFormat:@"%@/album/%@", kDZRBaseURL, albumId];
-    NSURLRequest *APIRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlRequest]];
-    [NSURLConnection sendAsynchronousRequest:APIRequest
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                               if (connectionError) {
-                                   completion(nil, connectionError);
-                               } else {
-                                   NSDictionary *retData = [NSJSONSerialization JSONObjectWithData:data
-                                                                                           options:kNilOptions
-                                                                                             error:&connectionError];
-                                   NSLog(@"%@", [retData objectForKey:@"data"]);
-                                   
-                                   NSArray *tracksData = retData[@"tracks"][@"data"];
-                                   NSMutableArray *tracks = [NSMutableArray array];
-                                   for (NSDictionary *trackDict in tracksData) {
-                                       DZRTrack *track = [[DZRTrack alloc] initWithDictionary:trackDict];
-                                       [tracks addObject:track];
-                                   }
-                                   
-                                   completion(tracks, nil);
-                               }
-                           }];
-
+    NSString *url = [NSString stringWithFormat:@"%@/album/%@", kDZRBaseURL, albumId];
+    [self requestWithUrl:url completion:^(NSDictionary *retData, NSError *error) {
+        if (error) {
+            completion(nil, error);
+        } else {
+            NSArray *tracksData = retData[@"tracks"][@"data"];
+            NSMutableArray *tracks = [NSMutableArray array];
+            for (NSDictionary *trackDict in tracksData) {
+                DZRTrack *track = [[DZRTrack alloc] initWithDictionary:trackDict];
+                [tracks addObject:track];
+            }
+            completion(tracks, nil);
+        }
+    }];
 }
 
 @end

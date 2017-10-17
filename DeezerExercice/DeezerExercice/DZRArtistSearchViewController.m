@@ -93,9 +93,9 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"ArtistCollectionViewCellIdentifier";
+    static NSString *cellIdentifier = @"ArtistCollectionViewCellIdentifier";
 
-    DZRArtistCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    DZRArtistCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     DZRArtist *artist = self.artists[indexPath.row];
     [cell updateWithArtistId:artist.identifier
                         name:artist.artistName

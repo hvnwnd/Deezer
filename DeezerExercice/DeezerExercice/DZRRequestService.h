@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @class DZRAlbum;
+@protocol DZRParsable;
 @interface DZRRequestService : NSObject
 
 - (void)searchArtistWithText:(NSString *)text
-                  completion:(void(^)(NSArray *result, NSError *error))completion;
+                  completion:(void(^)(NSArray<id <DZRParsable>> *result, NSError *error))completion;
 
 - (void)fetchFirstAlbumWithArtistId:(NSString *)artistId
                           completion:(void(^)(DZRAlbum *album, NSError *error))completion;

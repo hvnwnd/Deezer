@@ -62,6 +62,8 @@ CGFloat const kDZRArtistDetailViewControllerCellHeight = 80.0;
     return _requestService;
 }
 
+#pragma mark - UITableViewDataSource
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.tracks.count;

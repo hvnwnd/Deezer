@@ -34,6 +34,7 @@
 }
 
 - (void)playWithDuration:(NSTimeInterval)duration {
-    [self.playBack strokeWithDuration:duration];
+    [self.playBack animateWithDuration:duration];
 }
+
 @end
