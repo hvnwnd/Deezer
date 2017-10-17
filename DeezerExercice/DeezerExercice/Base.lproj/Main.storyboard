@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Gp8-Eg-ZWf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Gp8-Eg-ZWf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -100,15 +100,25 @@
                                     <outlet property="delegate" destination="t1i-yi-ig2" id="mL9-sW-euF"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GJJ-UR-xAX" customClass="DZRLoadingView">
+                                <rect key="frame" x="127.5" y="293.5" width="120" height="80"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="ibC-Tp-DAm"/>
+                                    <constraint firstAttribute="width" constant="120" id="jDm-vt-oKQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="GJJ-UR-xAX" firstAttribute="centerY" secondItem="XnD-JA-gNf" secondAttribute="centerY" id="19C-27-LPu"/>
                             <constraint firstItem="pap-sx-raJ" firstAttribute="leading" secondItem="XnD-JA-gNf" secondAttribute="leading" id="Elj-ed-i9T"/>
                             <constraint firstAttribute="bottom" secondItem="G2z-Iq-UIH" secondAttribute="bottom" id="R3E-Jo-teJ"/>
                             <constraint firstAttribute="trailing" secondItem="G2z-Iq-UIH" secondAttribute="trailing" id="Sx6-bp-pdy"/>
                             <constraint firstItem="pap-sx-raJ" firstAttribute="top" secondItem="29h-Lx-bSm" secondAttribute="bottom" id="Ta6-d2-v8y"/>
                             <constraint firstAttribute="trailing" secondItem="pap-sx-raJ" secondAttribute="trailing" id="e4g-ig-iix"/>
                             <constraint firstItem="pap-sx-raJ" firstAttribute="top" secondItem="29h-Lx-bSm" secondAttribute="bottom" id="pgt-Dv-Xds"/>
+                            <constraint firstItem="GJJ-UR-xAX" firstAttribute="centerX" secondItem="XnD-JA-gNf" secondAttribute="centerX" id="sJ0-Fi-Sxk"/>
                             <constraint firstItem="G2z-Iq-UIH" firstAttribute="leading" secondItem="XnD-JA-gNf" secondAttribute="leading" id="vKY-0v-G89"/>
                             <constraint firstItem="G2z-Iq-UIH" firstAttribute="top" secondItem="pap-sx-raJ" secondAttribute="bottom" id="yCk-BW-yNx"/>
                         </constraints>
@@ -116,6 +126,7 @@
                     <navigationItem key="navigationItem" title="Artist Search" id="rtH-4h-Mgp"/>
                     <connections>
                         <outlet property="collectionView" destination="G2z-Iq-UIH" id="IIW-82-eMc"/>
+                        <outlet property="loadingView" destination="GJJ-UR-xAX" id="uTw-dI-1Sg"/>
                         <outlet property="searchBar" destination="pap-sx-raJ" id="Owf-DU-yQc"/>
                     </connections>
                 </viewController>
@@ -127,7 +138,7 @@
         <scene sceneID="Yzj-lw-24N">
             <objects>
                 <tableViewController id="u9c-3n-72M" customClass="DZRArtistDetailViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bXB-wJ-AWz">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bXB-wJ-AWz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -163,7 +174,7 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DZRTrackTableViewCellIdentifier" id="Akq-c8-m6S" customClass="DZRTrackTableViewCell">
                                 <rect key="frame" x="0.0" y="168" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Akq-c8-m6S" id="mDu-BV-GF0">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Akq-c8-m6S" id="mDu-BV-GF0">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>

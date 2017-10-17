@@ -19,4 +19,8 @@
     [alert show];
 }
 
+- (void)showLoadingView{
+
+}
+
 @end

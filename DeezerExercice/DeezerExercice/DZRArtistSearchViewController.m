@@ -10,13 +10,15 @@
 #import "DZRRequestService.h"
 #import "DZRArtist.h"
 #import "UIViewController+Error.h"
+#import "DZRLoadingView.h"
 
 @interface DZRArtistSearchViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
-@property (nonatomic, strong) NSArray *artists;
+@property (nonatomic, weak) IBOutlet DZRLoadingView *loadingView;
 
+@property (nonatomic, strong) NSArray *artists;
 @property (nonatomic) DZRRequestService *requestService;
 @end
 
@@ -26,6 +28,8 @@
 {
     [super viewDidLoad];
     [self.searchBar becomeFirstResponder];
+    self.loadingView.hidden = YES;
+    self.loadingView.layer.cornerRadius = 8.0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,9 +62,12 @@
 #pragma - Search
 
 - (void)searchArtistsWithName:(NSString *)name {
+    self.loadingView.hidden = NO;
     __weak typeof (self) weakSelf = self;
     NSString *escapedString = [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [self.requestService searchArtistWithText:escapedString completion:^(NSArray *result, NSError *error) {
+        self.loadingView.hidden = YES;
+
         if (result){
             weakSelf.artists = result;
             [weakSelf.collectionView reloadData];
