@@ -30,6 +30,7 @@
 		FC1FE1941F97F8AD003A3FF1 /* DZRAlbumTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FC1FE1931F97F8AD003A3FF1 /* DZRAlbumTest.m */; };
 		FC1FE1961F97F8BF003A3FF1 /* DZRTrackTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FC1FE1951F97F8BF003A3FF1 /* DZRTrackTest.m */; };
 		FC1FE1991F97FE6E003A3FF1 /* DZRArtistSearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC1FE1981F97FE6E003A3FF1 /* DZRArtistSearchViewModel.m */; };
+		FC1FE19C1F9803D8003A3FF1 /* DZRArtistDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC1FE19B1F9803D8003A3FF1 /* DZRArtistDetailViewModel.m */; };
 		FC8F3EA01F95514C00E59B6D /* UIViewController+Error.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8F3E9F1F95514C00E59B6D /* UIViewController+Error.m */; };
 		FC8F3EA31F95529E00E59B6D /* DZRPlayBack.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8F3EA21F95529E00E59B6D /* DZRPlayBack.m */; };
 		FC8F3EA41F95540900E59B6D /* UIImageView+Async.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8F3E9D1F95512C00E59B6D /* UIImageView+Async.m */; };
@@ -91,6 +92,8 @@
 		FC1FE1951F97F8BF003A3FF1 /* DZRTrackTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZRTrackTest.m; sourceTree = "<group>"; };
 		FC1FE1971F97FE6E003A3FF1 /* DZRArtistSearchViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZRArtistSearchViewModel.h; sourceTree = "<group>"; };
 		FC1FE1981F97FE6E003A3FF1 /* DZRArtistSearchViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZRArtistSearchViewModel.m; sourceTree = "<group>"; };
+		FC1FE19A1F9803D8003A3FF1 /* DZRArtistDetailViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZRArtistDetailViewModel.h; sourceTree = "<group>"; };
+		FC1FE19B1F9803D8003A3FF1 /* DZRArtistDetailViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZRArtistDetailViewModel.m; sourceTree = "<group>"; };
 		FC8F3E9C1F95512C00E59B6D /* UIImageView+Async.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Async.h"; sourceTree = "<group>"; };
 		FC8F3E9D1F95512C00E59B6D /* UIImageView+Async.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Async.m"; sourceTree = "<group>"; };
 		FC8F3E9E1F95514C00E59B6D /* UIViewController+Error.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Error.h"; sourceTree = "<group>"; };
@@ -207,8 +210,7 @@
 		741B2B081F96623000863B36 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				FC1FE1971F97FE6E003A3FF1 /* DZRArtistSearchViewModel.h */,
-				FC1FE1981F97FE6E003A3FF1 /* DZRArtistSearchViewModel.m */,
+				FC1FE19D1F9809E6003A3FF1 /* ViewModel */,
 				741B2B091F96623D00863B36 /* ViewController */,
 				741B2B0A1F96624600863B36 /* View */,
 			);
@@ -272,6 +274,17 @@
 				741B2B1B1F97A6DC00863B36 /* DZRPushTransitionAnimator.m */,
 			);
 			name = Transition;
+			sourceTree = "<group>";
+		};
+		FC1FE19D1F9809E6003A3FF1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FC1FE1971F97FE6E003A3FF1 /* DZRArtistSearchViewModel.h */,
+				FC1FE1981F97FE6E003A3FF1 /* DZRArtistSearchViewModel.m */,
+				FC1FE19A1F9803D8003A3FF1 /* DZRArtistDetailViewModel.h */,
+				FC1FE19B1F9803D8003A3FF1 /* DZRArtistDetailViewModel.m */,
+			);
+			name = ViewModel;
 			sourceTree = "<group>";
 		};
 		FC8F3E9B1F9550F600E59B6D /* Category */ = {
@@ -408,6 +421,7 @@
 				FC94FD271F9541A4000E48A2 /* DZRPlayer.m in Sources */,
 				5C06C22F1A6E987F0051EF03 /* DZRArtistCollectionViewCell.m in Sources */,
 				741B2B011F9620CC00863B36 /* DZRParsableObject.m in Sources */,
+				FC1FE19C1F9803D8003A3FF1 /* DZRArtistDetailViewModel.m in Sources */,
 				FC8F3EA31F95529E00E59B6D /* DZRPlayBack.m in Sources */,
 				5C2E661A1A67C07E00607EC5 /* DZRArtist.m in Sources */,
 			);

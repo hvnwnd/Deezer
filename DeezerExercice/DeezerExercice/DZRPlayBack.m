@@ -25,7 +25,6 @@
                                                            endAngle:M_PI_2 * 3
                                                           clockwise:YES];
     
-    
     return roundPath;
 }
 
