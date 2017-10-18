@@ -9,16 +9,18 @@
 #import <Foundation/Foundation.h>
 
 @class DZRAlbum;
-@protocol DZRParsable;
+@class DZRArtist;
+@class DZRTrack;
+
 @interface DZRRequestService : NSObject
 
 - (void)searchArtistWithText:(NSString *)text
-                  completion:(void(^)(NSArray<id <DZRParsable>> *result, NSError *error))completion;
+                  completion:(void(^)(NSArray<DZRArtist *> *result, NSError *error))completion;
 
 - (void)fetchFirstAlbumWithArtistId:(NSString *)artistId
-                          completion:(void(^)(DZRAlbum *album, NSError *error))completion;
+                          completion:(void(^)(NSArray<DZRAlbum *> *albums, NSError *error))completion;
 
 - (void)fetchAlbumTracksWithAlbumId:(NSString *)albumId
-                         completion:(void(^)(NSArray *trackList, NSError *error))completion;
+                         completion:(void(^)(NSArray<DZRTrack *> *trackList, NSError *error))completion;
 
 @end

@@ -38,7 +38,8 @@ CGFloat const kDZRArtistDetailViewControllerCellHeight = 80.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     __weak typeof (self) weakSelf = self;
-    [self.requestService fetchFirstAlbumWithArtistId:self.artistId completion:^(DZRAlbum *album, NSError *error) {
+    [self.requestService fetchFirstAlbumWithArtistId:self.artistId completion:^(NSArray *albums, NSError *error) {
+        DZRAlbum *album = albums.firstObject;
         weakSelf.tableViewTitle.text = album.albumTitle;
         [weakSelf.cover setImageUrl:album.albumCoverUrl];
         
