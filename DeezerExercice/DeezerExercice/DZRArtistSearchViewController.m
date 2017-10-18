@@ -58,9 +58,6 @@
         DZRArtistCollectionViewCell *cell = (DZRArtistCollectionViewCell *)sender;
         detailViewController.artistId = cell.artistId;
         detailViewController.title = cell.artistName;
-        
-        detailViewController.navigationController.delegate = self;
-        //detailViewController.transitioningDelegate = self.transitionManager;
     }
 }
 
