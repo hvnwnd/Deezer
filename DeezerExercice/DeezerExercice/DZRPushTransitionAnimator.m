@@ -11,7 +11,6 @@
 @implementation DZRPushTransitionAnimator
 
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext{
-    
     return 0.6;
 }
 

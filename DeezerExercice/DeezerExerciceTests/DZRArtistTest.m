@@ -50,10 +50,14 @@
                                      };
     DZRArtist *artist = [[DZRArtist alloc] initWithDictionary:dictionary];
     
-    XCTAssertEqualObjects(artist.artistIdentifier, @"1033");
+    XCTAssertNotNil(artist);
+    XCTAssertEqualObjects(artist.identifier, @"1033");
     XCTAssertEqualObjects(artist.artistName, @"Alain Souchon");
     XCTAssertEqualObjects(artist.artistPictureUrl, @"http://api.deezer.com/artist/1033/image");
 }
 
+- (void)testServiceName {
+    XCTAssertEqualObjects([DZRArtist serviceName], @"artist");
+}
 
 @end

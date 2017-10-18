@@ -27,6 +27,8 @@
 		741B2B191F97A21700863B36 /* NSDictionary+DZRParsable.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B2B181F97A21700863B36 /* NSDictionary+DZRParsable.m */; };
 		741B2B1C1F97A6DC00863B36 /* DZRPushTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B2B1B1F97A6DC00863B36 /* DZRPushTransitionAnimator.m */; };
 		FC1FE1921F955F3D003A3FF1 /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = FC1FE1911F955F3D003A3FF1 /* TODO */; };
+		FC1FE1941F97F8AD003A3FF1 /* DZRAlbumTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FC1FE1931F97F8AD003A3FF1 /* DZRAlbumTest.m */; };
+		FC1FE1961F97F8BF003A3FF1 /* DZRTrackTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FC1FE1951F97F8BF003A3FF1 /* DZRTrackTest.m */; };
 		FC8F3EA01F95514C00E59B6D /* UIViewController+Error.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8F3E9F1F95514C00E59B6D /* UIViewController+Error.m */; };
 		FC8F3EA31F95529E00E59B6D /* DZRPlayBack.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8F3EA21F95529E00E59B6D /* DZRPlayBack.m */; };
 		FC8F3EA41F95540900E59B6D /* UIImageView+Async.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8F3E9D1F95512C00E59B6D /* UIImageView+Async.m */; };
@@ -84,6 +86,8 @@
 		741B2B1A1F97A6DC00863B36 /* DZRPushTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZRPushTransitionAnimator.h; sourceTree = "<group>"; };
 		741B2B1B1F97A6DC00863B36 /* DZRPushTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZRPushTransitionAnimator.m; sourceTree = "<group>"; };
 		FC1FE1911F955F3D003A3FF1 /* TODO */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
+		FC1FE1931F97F8AD003A3FF1 /* DZRAlbumTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZRAlbumTest.m; sourceTree = "<group>"; };
+		FC1FE1951F97F8BF003A3FF1 /* DZRTrackTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZRTrackTest.m; sourceTree = "<group>"; };
 		FC8F3E9C1F95512C00E59B6D /* UIImageView+Async.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Async.h"; sourceTree = "<group>"; };
 		FC8F3E9D1F95512C00E59B6D /* UIImageView+Async.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Async.m"; sourceTree = "<group>"; };
 		FC8F3E9E1F95514C00E59B6D /* UIViewController+Error.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Error.h"; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				5C2E661B1A67C3D500607EC5 /* DZRArtistTest.m */,
+				FC1FE1931F97F8AD003A3FF1 /* DZRAlbumTest.m */,
+				FC1FE1951F97F8BF003A3FF1 /* DZRTrackTest.m */,
 				5C1A7D9C1A6558BC00092761 /* Supporting Files */,
 			);
 			path = DeezerExerciceTests;
@@ -405,6 +411,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC1FE1941F97F8AD003A3FF1 /* DZRAlbumTest.m in Sources */,
+				FC1FE1961F97F8BF003A3FF1 /* DZRTrackTest.m in Sources */,
 				5C2E661C1A67C3D500607EC5 /* DZRArtistTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
