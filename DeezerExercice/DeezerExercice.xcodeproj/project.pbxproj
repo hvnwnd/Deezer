@@ -29,6 +29,7 @@
 		FC1FE1921F955F3D003A3FF1 /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = FC1FE1911F955F3D003A3FF1 /* TODO */; };
 		FC1FE1941F97F8AD003A3FF1 /* DZRAlbumTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FC1FE1931F97F8AD003A3FF1 /* DZRAlbumTest.m */; };
 		FC1FE1961F97F8BF003A3FF1 /* DZRTrackTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FC1FE1951F97F8BF003A3FF1 /* DZRTrackTest.m */; };
+		FC1FE1991F97FE6E003A3FF1 /* DZRArtistSearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC1FE1981F97FE6E003A3FF1 /* DZRArtistSearchViewModel.m */; };
 		FC8F3EA01F95514C00E59B6D /* UIViewController+Error.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8F3E9F1F95514C00E59B6D /* UIViewController+Error.m */; };
 		FC8F3EA31F95529E00E59B6D /* DZRPlayBack.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8F3EA21F95529E00E59B6D /* DZRPlayBack.m */; };
 		FC8F3EA41F95540900E59B6D /* UIImageView+Async.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8F3E9D1F95512C00E59B6D /* UIImageView+Async.m */; };
@@ -88,6 +89,8 @@
 		FC1FE1911F955F3D003A3FF1 /* TODO */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		FC1FE1931F97F8AD003A3FF1 /* DZRAlbumTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZRAlbumTest.m; sourceTree = "<group>"; };
 		FC1FE1951F97F8BF003A3FF1 /* DZRTrackTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZRTrackTest.m; sourceTree = "<group>"; };
+		FC1FE1971F97FE6E003A3FF1 /* DZRArtistSearchViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZRArtistSearchViewModel.h; sourceTree = "<group>"; };
+		FC1FE1981F97FE6E003A3FF1 /* DZRArtistSearchViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZRArtistSearchViewModel.m; sourceTree = "<group>"; };
 		FC8F3E9C1F95512C00E59B6D /* UIImageView+Async.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Async.h"; sourceTree = "<group>"; };
 		FC8F3E9D1F95512C00E59B6D /* UIImageView+Async.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Async.m"; sourceTree = "<group>"; };
 		FC8F3E9E1F95514C00E59B6D /* UIViewController+Error.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Error.h"; sourceTree = "<group>"; };
@@ -204,6 +207,8 @@
 		741B2B081F96623000863B36 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				FC1FE1971F97FE6E003A3FF1 /* DZRArtistSearchViewModel.h */,
+				FC1FE1981F97FE6E003A3FF1 /* DZRArtistSearchViewModel.m */,
 				741B2B091F96623D00863B36 /* ViewController */,
 				741B2B0A1F96624600863B36 /* View */,
 			);
@@ -392,6 +397,7 @@
 				741B2B071F965C2200863B36 /* DZRLoadingView.m in Sources */,
 				5C1A7D881A6558BB00092761 /* AppDelegate.m in Sources */,
 				740CE2401F94F682000A2EB2 /* DZRRequestService.m in Sources */,
+				FC1FE1991F97FE6E003A3FF1 /* DZRArtistSearchViewModel.m in Sources */,
 				741B2B191F97A21700863B36 /* NSDictionary+DZRParsable.m in Sources */,
 				FC94FD241F95408E000E48A2 /* DZRTrack.m in Sources */,
 				FC8F3EA41F95540900E59B6D /* UIImageView+Async.m in Sources */,

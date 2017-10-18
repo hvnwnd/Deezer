@@ -15,12 +15,12 @@
 @interface DZRRequestService : NSObject
 
 - (void)searchArtistWithText:(NSString *)text
-                  completion:(void(^)(NSArray<DZRArtist *> *result, NSError *error))completion;
+                  completion:(void(^)(NSArray<DZRArtist *> *artists, NSError *error))completion;
 
 - (void)fetchFirstAlbumWithArtistId:(NSString *)artistId
                           completion:(void(^)(NSArray<DZRAlbum *> *albums, NSError *error))completion;
 
 - (void)fetchAlbumTracksWithAlbumId:(NSString *)albumId
-                         completion:(void(^)(NSArray<DZRTrack *> *trackList, NSError *error))completion;
+                         completion:(void(^)(NSArray<DZRTrack *> *tracks, NSError *error))completion;
 
 @end

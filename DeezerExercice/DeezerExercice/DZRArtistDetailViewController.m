@@ -14,14 +14,12 @@
 #import "DZRPlayer.h"
 #import "UIImageView+Async.h"
 #import "UIViewController+Error.h"
-#import "DZRLoadingView.h"
 
 CGFloat const kDZRArtistDetailViewControllerCellHeight = 80.0;
 
 @interface DZRArtistDetailViewController () <DZRPlayerDelegate>
 @property (nonatomic, weak) IBOutlet UILabel *tableViewTitle;
 @property (nonatomic, weak) IBOutlet UIImageView *cover;
-@property (nonatomic, weak) IBOutlet DZRLoadingView *loadingView;
 
 @property (nonatomic) NSArray *tracks;
 @property (nonatomic) DZRRequestService *requestService;
@@ -88,6 +86,8 @@ CGFloat const kDZRArtistDetailViewControllerCellHeight = 80.0;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     DZRTrack *track = self.tracks[indexPath.row];
     [[DZRPlayer sharedPlayer] playWithUrl:track.trackUrl];
     

@@ -18,7 +18,7 @@ NSString *const kDZRBaseURL = @"https://api.deezer.com/";
 @implementation DZRRequestService
 
 - (void)searchArtistWithText:(NSString *)text
-                  completion:(void(^)(NSArray<DZRArtist *> *result, NSError *error))completion;
+                  completion:(void(^)(NSArray<DZRArtist *> *artists, NSError *error))completion;
 {
     [self searchClass:[DZRArtist class] withText:text completion:completion];
 }
