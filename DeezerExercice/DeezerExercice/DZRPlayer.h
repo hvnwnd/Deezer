@@ -12,6 +12,7 @@
 @protocol DZRPlayerDelegate <NSObject>
 
 - (void)DZRPlayerWillBegin:(DZRPlayer *)player duration:(NSTimeInterval)duration;
+- (void)DZRPlayerDidFinish:(DZRPlayer *)player;
 
 @end
 @interface DZRPlayer : NSObject

@@ -32,6 +32,8 @@
     [self.requestService fetchFirstAlbumWithArtistId:identifier completion:^(NSArray *albums, NSError *error) {
         if (error){
             weakSelf.error = error;
+        }else if (albums.count == 0){
+            weakSelf.error = [NSError errorWithDomain:@"Fonctional" code:0 userInfo:@{NSLocalizedDescriptionKey:@"No album found."}];
         }else{
             weakSelf.album = albums.firstObject;
             [weakSelf.requestService fetchAlbumTracksWithAlbumId:weakSelf.album.identifier completion:^(NSArray *trackList, NSError *error) {

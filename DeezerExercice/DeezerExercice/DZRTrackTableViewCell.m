@@ -7,12 +7,13 @@
 //
 
 #import "DZRTrackTableViewCell.h"
-#import "DZRPlayBack.h"
+#import "DZRTrackPreviewProgressView.h"
 
 @interface DZRTrackTableViewCell ()
 
 @property (nonatomic, weak) IBOutlet UILabel *trackTitle;
-@property (nonatomic, weak) IBOutlet DZRPlayBack *playBack;
+@property (nonatomic, weak) IBOutlet DZRTrackPreviewProgressView *progressView;
+@property (nonatomic, weak) IBOutlet UIImageView *playImageView;
 
 @end
 @implementation DZRTrackTableViewCell
@@ -34,7 +35,13 @@
 }
 
 - (void)playWithDuration:(NSTimeInterval)duration {
-    [self.playBack animateWithDuration:duration];
+    [self.progressView animateWithDuration:duration];
+    self.playImageView.image = [UIImage imageNamed:@"pause-button"];
+}
+
+- (void)stop
+{
+    self.playImageView.image = [UIImage imageNamed:@"play-button"];
 }
 
 @end

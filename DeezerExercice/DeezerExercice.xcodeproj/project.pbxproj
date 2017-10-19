@@ -32,7 +32,7 @@
 		FC1FE1991F97FE6E003A3FF1 /* DZRArtistSearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC1FE1981F97FE6E003A3FF1 /* DZRArtistSearchViewModel.m */; };
 		FC1FE19C1F9803D8003A3FF1 /* DZRArtistDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FC1FE19B1F9803D8003A3FF1 /* DZRArtistDetailViewModel.m */; };
 		FC8F3EA01F95514C00E59B6D /* UIViewController+Error.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8F3E9F1F95514C00E59B6D /* UIViewController+Error.m */; };
-		FC8F3EA31F95529E00E59B6D /* DZRPlayBack.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8F3EA21F95529E00E59B6D /* DZRPlayBack.m */; };
+		FC8F3EA31F95529E00E59B6D /* DZRTrackPreviewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8F3EA21F95529E00E59B6D /* DZRTrackPreviewProgressView.m */; };
 		FC8F3EA41F95540900E59B6D /* UIImageView+Async.m in Sources */ = {isa = PBXBuildFile; fileRef = FC8F3E9D1F95512C00E59B6D /* UIImageView+Async.m */; };
 		FC94FD211F953EE9000E48A2 /* DZRTrackTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC94FD201F953EE9000E48A2 /* DZRTrackTableViewCell.m */; };
 		FC94FD241F95408E000E48A2 /* DZRTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = FC94FD231F95408E000E48A2 /* DZRTrack.m */; };
@@ -98,8 +98,8 @@
 		FC8F3E9D1F95512C00E59B6D /* UIImageView+Async.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Async.m"; sourceTree = "<group>"; };
 		FC8F3E9E1F95514C00E59B6D /* UIViewController+Error.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Error.h"; sourceTree = "<group>"; };
 		FC8F3E9F1F95514C00E59B6D /* UIViewController+Error.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Error.m"; sourceTree = "<group>"; };
-		FC8F3EA11F95529E00E59B6D /* DZRPlayBack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZRPlayBack.h; sourceTree = "<group>"; };
-		FC8F3EA21F95529E00E59B6D /* DZRPlayBack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZRPlayBack.m; sourceTree = "<group>"; };
+		FC8F3EA11F95529E00E59B6D /* DZRTrackPreviewProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZRTrackPreviewProgressView.h; sourceTree = "<group>"; };
+		FC8F3EA21F95529E00E59B6D /* DZRTrackPreviewProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZRTrackPreviewProgressView.m; sourceTree = "<group>"; };
 		FC94FD1F1F953EE9000E48A2 /* DZRTrackTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZRTrackTableViewCell.h; sourceTree = "<group>"; };
 		FC94FD201F953EE9000E48A2 /* DZRTrackTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZRTrackTableViewCell.m; sourceTree = "<group>"; };
 		FC94FD221F95408E000E48A2 /* DZRTrack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZRTrack.h; sourceTree = "<group>"; };
@@ -236,8 +236,8 @@
 				FC94FD201F953EE9000E48A2 /* DZRTrackTableViewCell.m */,
 				5C06C22D1A6E987F0051EF03 /* DZRArtistCollectionViewCell.h */,
 				5C06C22E1A6E987F0051EF03 /* DZRArtistCollectionViewCell.m */,
-				FC8F3EA11F95529E00E59B6D /* DZRPlayBack.h */,
-				FC8F3EA21F95529E00E59B6D /* DZRPlayBack.m */,
+				FC8F3EA11F95529E00E59B6D /* DZRTrackPreviewProgressView.h */,
+				FC8F3EA21F95529E00E59B6D /* DZRTrackPreviewProgressView.m */,
 				741B2B031F965C0D00863B36 /* DZRLoadingView.xib */,
 				741B2B051F965C2200863B36 /* DZRLoadingView.h */,
 				741B2B061F965C2200863B36 /* DZRLoadingView.m */,
@@ -422,7 +422,7 @@
 				5C06C22F1A6E987F0051EF03 /* DZRArtistCollectionViewCell.m in Sources */,
 				741B2B011F9620CC00863B36 /* DZRParsableObject.m in Sources */,
 				FC1FE19C1F9803D8003A3FF1 /* DZRArtistDetailViewModel.m in Sources */,
-				FC8F3EA31F95529E00E59B6D /* DZRPlayBack.m in Sources */,
+				FC8F3EA31F95529E00E59B6D /* DZRTrackPreviewProgressView.m in Sources */,
 				5C2E661A1A67C07E00607EC5 /* DZRArtist.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

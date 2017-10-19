@@ -10,7 +10,7 @@
 @import AVFoundation;
 @import AudioToolbox;
 
-@interface DZRPlayer ()
+@interface DZRPlayer () <AVAudioPlayerDelegate>
 
 @property (nonatomic) AVAudioPlayer *audioPlayer;
 
@@ -44,7 +44,8 @@
         NSError *error = nil;
 
         self.audioPlayer = [[AVAudioPlayer alloc] initWithData:data error:&error];
-        if (self.delegate){
+        self.audioPlayer.delegate = self;
+        if (self.delegate && [self.delegate respondsToSelector:@selector(DZRPlayerWillBegin:duration:)]){
             [self.delegate DZRPlayerWillBegin:self duration:self.audioPlayer.duration];
         }
         [self.audioPlayer play];
@@ -58,5 +59,12 @@
 
 - (BOOL)isPlaying{
     return self.audioPlayer.playing;
+}
+
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(DZRPlayerDidFinish:)]){
+        [self.delegate DZRPlayerDidFinish:self];
+    }
 }
 @end

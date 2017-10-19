@@ -24,9 +24,8 @@ NSString *const kDZRArtistDetailViewControllerErrorKey = @"error";
 @property (nonatomic, weak) IBOutlet UILabel *tableViewTitle;
 @property (nonatomic, weak) IBOutlet UIImageView *cover;
 
-@property (nonatomic) NSArray *tracks;
-
 @property (nonatomic) DZRArtistDetailViewModel *viewModel;
+@property (nonatomic) NSIndexPath *currentSelectedIndexPath;
 @end
 
 @implementation DZRArtistDetailViewController
@@ -103,21 +102,30 @@ NSString *const kDZRArtistDetailViewControllerErrorKey = @"error";
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    DZRTrack *track = self.viewModel.tracks[indexPath.row];
-    [[DZRPlayer sharedPlayer] playWithUrl:track.trackUrl];
-    
-    [DZRPlayer sharedPlayer].delegate = self;
-    self.navigationItem.rightBarButtonItem =  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(pausePlayer:)];
+    if ([self.currentSelectedIndexPath isEqual:indexPath]){
+        DZRTrackTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.currentSelectedIndexPath];
+        [cell stop];
+        [[DZRPlayer sharedPlayer] stop];
+    }else{
+        self.currentSelectedIndexPath = indexPath;
+        DZRTrack *track = self.viewModel.tracks[indexPath.row];
+        [[DZRPlayer sharedPlayer] playWithUrl:track.trackUrl];
+        [DZRPlayer sharedPlayer].delegate = self;
+    }
 }
 
 - (void)pausePlayer:(id)sender{
-    [[DZRPlayer sharedPlayer] stop];
-    self.navigationItem.rightBarButtonItem = nil;
 }
 
 - (void)DZRPlayerWillBegin:(DZRPlayer *)player duration:(NSTimeInterval)duration{
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    DZRTrackTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    DZRTrackTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.currentSelectedIndexPath];
     [cell playWithDuration:duration];
+}
+
+- (void)DZRPlayerDidFinish:(DZRPlayer *)player
+{
+    DZRTrackTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.currentSelectedIndexPath];
+    [cell stop];
+
 }
 @end

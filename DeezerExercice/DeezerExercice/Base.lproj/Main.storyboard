@@ -178,32 +178,44 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rhv-aR-fdY" customClass="DZRTrackPreviewProgressView">
+                                            <rect key="frame" x="16" y="5" width="32" height="32"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play-button" translatesAutoresizingMaskIntoConstraints="NO" id="ZTH-Ic-mPv">
+                                                    <rect key="frame" x="8" y="8" width="16" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="16" id="hlL-dR-9FE"/>
+                                                        <constraint firstAttribute="width" constant="16" id="iys-NG-6SG"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="ZTH-Ic-mPv" firstAttribute="centerX" secondItem="rhv-aR-fdY" secondAttribute="centerX" id="FEn-hV-fIk"/>
+                                                <constraint firstAttribute="height" constant="32" id="FOl-dk-huh"/>
+                                                <constraint firstItem="ZTH-Ic-mPv" firstAttribute="centerY" secondItem="rhv-aR-fdY" secondAttribute="centerY" id="NqU-W2-c21"/>
+                                                <constraint firstAttribute="width" constant="32" id="tuv-yo-TDp"/>
+                                            </constraints>
+                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jsm-RT-FjK">
-                                            <rect key="frame" x="16" y="10" width="303" height="23.5"/>
+                                            <rect key="frame" x="58" y="10" width="301" height="24"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rhv-aR-fdY" customClass="DZRPlayBack">
-                                            <rect key="frame" x="329" y="6" width="30" height="30"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="FOl-dk-huh"/>
-                                                <constraint firstAttribute="width" constant="30" id="tuv-yo-TDp"/>
-                                            </constraints>
-                                        </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="rhv-aR-fdY" secondAttribute="trailing" constant="16" id="0TX-yj-dhK"/>
                                         <constraint firstItem="rhv-aR-fdY" firstAttribute="centerY" secondItem="mDu-BV-GF0" secondAttribute="centerY" id="Beh-xg-iWL"/>
                                         <constraint firstAttribute="bottom" secondItem="Jsm-RT-FjK" secondAttribute="bottom" constant="10" id="CBg-c6-eUT"/>
-                                        <constraint firstItem="rhv-aR-fdY" firstAttribute="leading" secondItem="Jsm-RT-FjK" secondAttribute="trailing" constant="10" id="WYe-PQ-rkm"/>
-                                        <constraint firstItem="Jsm-RT-FjK" firstAttribute="leading" secondItem="mDu-BV-GF0" secondAttribute="leading" constant="16" id="lyq-2i-rFa"/>
+                                        <constraint firstItem="Jsm-RT-FjK" firstAttribute="leading" secondItem="rhv-aR-fdY" secondAttribute="trailing" constant="10" id="Cie-BG-s32"/>
+                                        <constraint firstAttribute="trailing" secondItem="Jsm-RT-FjK" secondAttribute="trailing" constant="16" id="e4U-1P-8TH"/>
+                                        <constraint firstItem="rhv-aR-fdY" firstAttribute="leading" secondItem="mDu-BV-GF0" secondAttribute="leading" constant="16" id="eJR-1z-PWL"/>
                                         <constraint firstItem="Jsm-RT-FjK" firstAttribute="top" secondItem="mDu-BV-GF0" secondAttribute="top" constant="10" id="pQV-Mf-oGQ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="playBack" destination="rhv-aR-fdY" id="Inh-3f-mAF"/>
+                                    <outlet property="playImageView" destination="ZTH-Ic-mPv" id="1g3-QS-MUk"/>
+                                    <outlet property="progressView" destination="rhv-aR-fdY" id="ids-hm-IBn"/>
                                     <outlet property="trackTitle" destination="Jsm-RT-FjK" id="DAq-PW-gQN"/>
                                 </connections>
                             </tableViewCell>
@@ -224,4 +236,7 @@
             <point key="canvasLocation" x="1528.8" y="163.26836581709148"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="play-button" width="32" height="32"/>
+    </resources>
 </document>

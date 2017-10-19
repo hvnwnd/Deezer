@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DZRPlayBack : UIView
+@interface DZRTrackPreviewProgressView : UIView
 
 - (void)animateWithDuration:(NSTimeInterval)duration;
 

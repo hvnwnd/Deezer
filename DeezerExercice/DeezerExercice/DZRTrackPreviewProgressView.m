@@ -6,15 +6,15 @@
 //  Copyright © 2017 Deezer. All rights reserved.
 //
 
-#import "DZRPlayBack.h"
+#import "DZRTrackPreviewProgressView.h"
 @import QuartzCore;
 
-@interface DZRPlayBack()
+@interface DZRTrackPreviewProgressView()<CAAnimationDelegate>
 
 @property (nonatomic, weak) CAShapeLayer *pathLayer;
 
 @end
-@implementation DZRPlayBack
+@implementation DZRTrackPreviewProgressView
 
 - (UIBezierPath *)roundPath {
     CGPoint centerPoint = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
@@ -24,7 +24,6 @@
                                                          startAngle:-M_PI_2
                                                            endAngle:M_PI_2 * 3
                                                           clockwise:YES];
-    
     return roundPath;
 }
 
@@ -40,16 +39,21 @@
         layer.fillColor = nil;
         layer.lineJoin = kCALineJoinBevel;
         layer.path = [self roundPath].CGPath;
-        [self.layer addSublayer:layer];
+        
     }
-    
-    
+    [self.layer addSublayer:self.pathLayer];
+
     CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    pathAnimation.delegate = self;
     pathAnimation.duration = duration;
     pathAnimation.fromValue = @(0.0f);
     pathAnimation.toValue = @(1.0f);
     [self.pathLayer addAnimation:pathAnimation forKey:@"strokeEnd"];
+}
 
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    [self.pathLayer removeFromSuperlayer];
 }
 
 @end
