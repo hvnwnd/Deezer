@@ -11,5 +11,5 @@
 @interface DZRTrackPreviewProgressView : UIView
 
 - (void)animateWithDuration:(NSTimeInterval)duration;
-
+- (void)reset;
 @end

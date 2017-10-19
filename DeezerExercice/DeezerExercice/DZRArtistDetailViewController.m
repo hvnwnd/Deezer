@@ -37,11 +37,18 @@ NSString *const kDZRArtistDetailViewControllerErrorKey = @"error";
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     [self.viewModel fetchFirstAlbumWithArtistId:self.artistId];
+    [DZRPlayer sharedPlayer].delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[DZRPlayer sharedPlayer] stop];
 }
 
 #pragma mark - Accessors
@@ -81,12 +88,12 @@ NSString *const kDZRArtistDetailViewControllerErrorKey = @"error";
 
 #pragma mark - UITableViewDataSource
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.viewModel.tracks.count;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"DZRTrackTableViewCellIdentifier";
     
@@ -101,21 +108,23 @@ NSString *const kDZRArtistDetailViewControllerErrorKey = @"error";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    if ([self.currentSelectedIndexPath isEqual:indexPath]){
-        DZRTrackTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.currentSelectedIndexPath];
+    DZRTrackTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.currentSelectedIndexPath];
+
+    if ([self.currentSelectedIndexPath isEqual:indexPath] && cell.isPlaying){
         [cell stop];
         [[DZRPlayer sharedPlayer] stop];
     }else{
+        if (cell){
+            [cell stop];
+        }
+
         self.currentSelectedIndexPath = indexPath;
         DZRTrack *track = self.viewModel.tracks[indexPath.row];
         [[DZRPlayer sharedPlayer] playWithUrl:track.trackUrl];
-        [DZRPlayer sharedPlayer].delegate = self;
     }
 }
 
-- (void)pausePlayer:(id)sender{
-}
+#pragma mark - Player Delegate
 
 - (void)DZRPlayerWillBegin:(DZRPlayer *)player duration:(NSTimeInterval)duration{
     DZRTrackTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.currentSelectedIndexPath];
@@ -126,6 +135,7 @@ NSString *const kDZRArtistDetailViewControllerErrorKey = @"error";
 {
     DZRTrackTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.currentSelectedIndexPath];
     [cell stop];
-
+    self.currentSelectedIndexPath = nil;
 }
+
 @end

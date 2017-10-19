@@ -36,12 +36,15 @@
 
 - (void)playWithDuration:(NSTimeInterval)duration {
     [self.progressView animateWithDuration:duration];
-    self.playImageView.image = [UIImage imageNamed:@"pause-button"];
+    self.playImageView.image = [UIImage imageNamed:@"stop"];
+    self.isPlaying = YES;
 }
 
 - (void)stop
 {
+    [self.progressView reset];
     self.playImageView.image = [UIImage imageNamed:@"play-button"];
+    self.isPlaying = NO;
 }
 
 @end

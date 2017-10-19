@@ -10,6 +10,7 @@
 
 @interface DZRTrackTableViewCell : UITableViewCell
 
+@property (nonatomic) BOOL isPlaying;
 - (void)updateWithTitle:(NSString *)title;
 - (void)playWithDuration:(NSTimeInterval)duration;
 - (void)stop;

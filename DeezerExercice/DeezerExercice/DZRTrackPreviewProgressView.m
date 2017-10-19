@@ -28,7 +28,7 @@
 }
 
 - (void)animateWithDuration:(NSTimeInterval)duration{
-    CGFloat lineWidth = 2.0;
+    CGFloat lineWidth = 3.0;
 
     if (!self.pathLayer){
         CAShapeLayer *layer = [CAShapeLayer layer];
@@ -50,10 +50,15 @@
     pathAnimation.toValue = @(1.0f);
     [self.pathLayer addAnimation:pathAnimation forKey:@"strokeEnd"];
 }
+- (void)reset
+{
+    [self.pathLayer removeAllAnimations];
+    [self.pathLayer removeFromSuperlayer];
+}
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
-    [self.pathLayer removeFromSuperlayer];
+    [self reset];
 }
 
 @end
