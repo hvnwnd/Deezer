@@ -26,10 +26,9 @@
                                                           clockwise:YES];
     return roundPath;
 }
-
-- (void)animateWithDuration:(NSTimeInterval)duration{
+- (void)animateFromStart:(NSTimeInterval)start withDuration:(NSTimeInterval)duration{
     CGFloat lineWidth = 3.0;
-
+    
     if (!self.pathLayer){
         CAShapeLayer *layer = [CAShapeLayer layer];
         self.pathLayer = layer;
@@ -42,13 +41,18 @@
         
     }
     [self.layer addSublayer:self.pathLayer];
-
+    
     CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
     pathAnimation.delegate = self;
     pathAnimation.duration = duration;
-    pathAnimation.fromValue = @(0.0f);
+    pathAnimation.fromValue = @((duration-start)/duration);
     pathAnimation.toValue = @(1.0f);
     [self.pathLayer addAnimation:pathAnimation forKey:@"strokeEnd"];
+
+}
+
+- (void)animateWithDuration:(NSTimeInterval)duration{
+    [self animateFromStart:0.0 withDuration:duration];
 }
 - (void)reset
 {

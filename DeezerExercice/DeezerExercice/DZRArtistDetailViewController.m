@@ -101,7 +101,16 @@ NSString *const kDZRArtistDetailViewControllerErrorKey = @"error";
     
     DZRTrack *track = self.viewModel.tracks[indexPath.row];
     [cell updateWithTitle:track.trackTitle];
-    
+    if (![indexPath isEqual:self.currentSelectedIndexPath]){
+        [cell stop];
+    }else{
+        NSTimeInterval remainedDuration = [DZRPlayer sharedPlayer].currentDuration - [DZRPlayer sharedPlayer].currentTime;
+        if (remainedDuration > 0){
+            [cell showPlayingFromStart:[DZRPlayer sharedPlayer].currentTime duration:remainedDuration];
+        }else{
+            [cell stop];
+        }
+    }
     return cell;
 }
 

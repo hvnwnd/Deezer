@@ -14,4 +14,5 @@
 - (void)updateWithTitle:(NSString *)title;
 - (void)playWithDuration:(NSTimeInterval)duration;
 - (void)stop;
+- (void)showPlayingFromStart:(NSTimeInterval)start duration:(NSTimeInterval)duration;
 @end

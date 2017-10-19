@@ -40,10 +40,17 @@
     self.isPlaying = YES;
 }
 
+- (void)showPlayingFromStart:(NSTimeInterval)start duration:(NSTimeInterval)duration
+{
+    [self.progressView animateFromStart:start withDuration:duration];
+    self.playImageView.image = [UIImage imageNamed:@"stop"];
+    self.isPlaying = YES;
+}
+
 - (void)stop
 {
     [self.progressView reset];
-    self.playImageView.image = [UIImage imageNamed:@"play-button"];
+    self.playImageView.image = [UIImage imageNamed:@"play"];
     self.isPlaying = NO;
 }
 

@@ -24,4 +24,6 @@
 - (void)playWithUrl:(NSString *)url;
 - (void)stop;
 - (BOOL)isPlaying;
+- (NSTimeInterval)currentTime;
+- (NSTimeInterval)currentDuration;
 @end

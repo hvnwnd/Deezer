@@ -61,6 +61,16 @@
     return self.audioPlayer.playing;
 }
 
+- (NSTimeInterval)currentTime
+{
+    return self.audioPlayer.currentTime;
+}
+
+- (NSTimeInterval)currentDuration
+{
+    return self.audioPlayer.duration;
+}
+
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(DZRPlayerDidFinish:)]){

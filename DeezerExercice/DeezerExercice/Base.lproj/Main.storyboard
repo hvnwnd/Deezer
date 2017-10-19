@@ -181,7 +181,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rhv-aR-fdY" customClass="DZRTrackPreviewProgressView">
                                             <rect key="frame" x="16" y="5" width="32" height="32"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play-button" translatesAutoresizingMaskIntoConstraints="NO" id="ZTH-Ic-mPv">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play" translatesAutoresizingMaskIntoConstraints="NO" id="ZTH-Ic-mPv">
                                                     <rect key="frame" x="8" y="8" width="16" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="hlL-dR-9FE"/>
@@ -237,6 +237,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="play-button" width="32" height="32"/>
+        <image name="play" width="32" height="32"/>
     </resources>
 </document>
