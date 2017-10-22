@@ -104,9 +104,10 @@ NSString *const kDZRArtistDetailViewControllerErrorKey = @"error";
     if (![indexPath isEqual:self.currentSelectedIndexPath]){
         [cell stop];
     }else{
-        NSTimeInterval remainedDuration = [DZRPlayer sharedPlayer].currentDuration - [DZRPlayer sharedPlayer].currentTime;
+        DZRPlayer *player = [DZRPlayer sharedPlayer];
+        NSTimeInterval remainedDuration = player.currentDuration - player.currentTime;
         if (remainedDuration > 0){
-            [cell showPlayingFromStart:[DZRPlayer sharedPlayer].currentTime duration:remainedDuration];
+            [cell showPlayingFromStart:player.currentTime duration:player.currentDuration];
         }else{
             [cell stop];
         }

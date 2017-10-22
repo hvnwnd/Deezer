@@ -44,8 +44,8 @@
     
     CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
     pathAnimation.delegate = self;
-    pathAnimation.duration = duration;
-    pathAnimation.fromValue = @((duration-start)/duration);
+    pathAnimation.duration = (duration - start);
+    pathAnimation.fromValue = @(start/duration);
     pathAnimation.toValue = @(1.0f);
     [self.pathLayer addAnimation:pathAnimation forKey:@"strokeEnd"];
 

@@ -68,6 +68,7 @@
 
 - (NSTimeInterval)currentDuration
 {
+    
     return self.audioPlayer.duration;
 }
 
