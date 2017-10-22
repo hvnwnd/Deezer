@@ -18,17 +18,6 @@
 @end
 @implementation DZRTrackTableViewCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 - (void)updateWithTitle:(NSString *)title
 {
     self.trackTitle.text = title;
@@ -40,7 +29,7 @@
     self.isPlaying = YES;
 }
 
-- (void)showPlayingFromStart:(NSTimeInterval)start duration:(NSTimeInterval)duration
+- (void)resumeAnimationFrom:(NSTimeInterval)start duration:(NSTimeInterval)duration
 {
     [self.progressView animateFromStart:start withDuration:duration];
     self.playImageView.image = [UIImage imageNamed:@"stop"];

@@ -96,7 +96,6 @@ NSString *const kDZRArtistDetailViewControllerErrorKey = @"error";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"DZRTrackTableViewCellIdentifier";
-    
     DZRTrackTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     DZRTrack *track = self.viewModel.tracks[indexPath.row];
@@ -107,7 +106,7 @@ NSString *const kDZRArtistDetailViewControllerErrorKey = @"error";
         DZRPlayer *player = [DZRPlayer sharedPlayer];
         NSTimeInterval remainedDuration = player.currentDuration - player.currentTime;
         if (remainedDuration > 0){
-            [cell showPlayingFromStart:player.currentTime duration:player.currentDuration];
+            [cell resumeAnimationFrom:player.currentTime duration:player.currentDuration];
         }else{
             [cell stop];
         }
