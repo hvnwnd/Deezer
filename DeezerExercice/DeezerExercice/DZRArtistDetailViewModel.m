@@ -45,7 +45,6 @@
                         [list addObject:cellModel];
                     }
                     weakSelf.trackViewModels = list;
-//                    weakSelf.tracks = trackList;
                 }else{
                     weakSelf.error = error;
                 }

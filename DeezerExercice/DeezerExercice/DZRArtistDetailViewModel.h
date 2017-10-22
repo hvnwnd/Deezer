@@ -12,7 +12,6 @@
 @interface DZRArtistDetailViewModel : NSObject
 
 @property (nonatomic) DZRAlbum *album;
-//@property (nonatomic) NSArray *tracks;
 @property (nonatomic) NSArray *trackViewModels;
 @property (nonatomic) NSError *error;
 

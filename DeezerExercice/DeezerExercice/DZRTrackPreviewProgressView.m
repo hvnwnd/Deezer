@@ -27,6 +27,12 @@
     return roundPath;
 }
 - (void)animateFromStart:(NSTimeInterval)start withDuration:(NSTimeInterval)duration{
+    if (duration <= 0){
+        return;
+    }
+    if (start > 0){
+        NSLog(@"toast");
+    }
     CGFloat lineWidth = 3.0;
     
     if (!self.pathLayer){

@@ -12,9 +12,5 @@
 @interface DZRTrackTableViewCell : UITableViewCell
 
 @property (nonatomic) DZRTrackTableViewCellViewModel *viewModel;
-@property (nonatomic) BOOL isPlaying;
-- (void)updateWithTitle:(NSString *)title;
-- (void)playWithDuration:(NSTimeInterval)duration;
-- (void)stop;
-- (void)resumeAnimationFrom:(NSTimeInterval)start duration:(NSTimeInterval)duration;
+
 @end

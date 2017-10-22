@@ -9,7 +9,6 @@
 #import "DZRArtistDetailViewController.h"
 #import "DZRAlbum.h"
 #import "DZRTrackTableViewCell.h"
-#import "DZRPlayer.h"
 #import "UIImageView+Async.h"
 #import "UIViewController+Error.h"
 #import "DZRArtistDetailViewModel.h"
@@ -20,7 +19,7 @@ NSString *const kDZRArtistDetailViewControllerAlbumKey = @"album";
 NSString *const kDZRArtistDetailViewControllerTracksKey = @"trackViewModels";
 NSString *const kDZRArtistDetailViewControllerErrorKey = @"error";
 
-@interface DZRArtistDetailViewController () <DZRPlayerDelegate>
+@interface DZRArtistDetailViewController ()
 @property (nonatomic, weak) IBOutlet UILabel *tableViewTitle;
 @property (nonatomic, weak) IBOutlet UIImageView *cover;
 
@@ -37,7 +36,14 @@ NSString *const kDZRArtistDetailViewControllerErrorKey = @"error";
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     [self.viewModel fetchFirstAlbumWithArtistId:self.artistId];
-    [DZRPlayer sharedPlayer].delegate = self;
+    
+    __weak typeof (self) weakSelf = self;
+    [[NSNotificationCenter defaultCenter] addObserverForName:DZRTrackTableViewCellViewModelPlayFinishNotification
+                                                      object:nil
+                                                       queue:[NSOperationQueue mainQueue]
+                                                  usingBlock:^(NSNotification * _Nonnull note) {
+        weakSelf.currentSelectedIndexPath = nil;
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,7 +54,6 @@ NSString *const kDZRArtistDetailViewControllerErrorKey = @"error";
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [[DZRPlayer sharedPlayer] stop];
 }
 
 #pragma mark - Accessors
@@ -81,6 +86,7 @@ NSString *const kDZRArtistDetailViewControllerErrorKey = @"error";
 }
 
 - (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.viewModel removeObserver:self forKeyPath:kDZRArtistDetailViewControllerAlbumKey];
     [self.viewModel removeObserver:self forKeyPath:kDZRArtistDetailViewControllerTracksKey];
     [self.viewModel removeObserver:self forKeyPath:kDZRArtistDetailViewControllerErrorKey];
@@ -97,55 +103,30 @@ NSString *const kDZRArtistDetailViewControllerErrorKey = @"error";
 {
     static NSString *cellIdentifier = @"DZRTrackTableViewCellIdentifier";
     DZRTrackTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    
     DZRTrackTableViewCellViewModel *cellModel = self.viewModel.trackViewModels[indexPath.row];
     cell.viewModel = cellModel;
-//    [cell updateWithTitle:track.trackTitle];
-    if (![indexPath isEqual:self.currentSelectedIndexPath]){
-        [cell stop];
-    }else{
-        DZRPlayer *player = [DZRPlayer sharedPlayer];
-        NSTimeInterval remainedDuration = player.currentDuration - player.currentTime;
-        if (remainedDuration > 0){
-            [cell resumeAnimationFrom:player.currentTime duration:player.currentDuration];
-        }else{
-            [cell stop];
-        }
+    if ([indexPath isEqual:self.currentSelectedIndexPath]){
+        [cellModel updateTrackStart];
     }
+    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    DZRTrackTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.currentSelectedIndexPath];
-
-    if ([self.currentSelectedIndexPath isEqual:indexPath] && cell.isPlaying){
-        [cell stop];
-        [[DZRPlayer sharedPlayer] stop];
-    }else{
-        if (cell){
-            [cell stop];
-        }
-
-        self.currentSelectedIndexPath = indexPath;
-        DZRTrackTableViewCellViewModel *cellModel = self.viewModel.trackViewModels[indexPath.row];
-        [[DZRPlayer sharedPlayer] playWithUrl:cellModel.url];
+    
+    BOOL sameIndexPath = [self.currentSelectedIndexPath isEqual:indexPath];
+    DZRTrackTableViewCellViewModel *oldCellModel = self.viewModel.trackViewModels[self.currentSelectedIndexPath.row];
+    if (oldCellModel.isPlaying){
+        [oldCellModel stop];
     }
-}
-
-#pragma mark - Player Delegate
-
-- (void)DZRPlayerWillBegin:(DZRPlayer *)player duration:(NSTimeInterval)duration{
-    DZRTrackTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.currentSelectedIndexPath];
-    [cell playWithDuration:duration];
-}
-
-- (void)DZRPlayerDidFinish:(DZRPlayer *)player
-{
-    DZRTrackTableViewCell *cell = [self.tableView cellForRowAtIndexPath:self.currentSelectedIndexPath];
-    [cell stop];
-    self.currentSelectedIndexPath = nil;
+    
+    if (!sameIndexPath){
+        self.currentSelectedIndexPath = indexPath;
+        DZRTrackTableViewCellViewModel *newCellModel = self.viewModel.trackViewModels[indexPath.row];
+        [newCellModel play];
+    }
 }
 
 @end
