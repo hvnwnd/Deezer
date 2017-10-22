@@ -9,6 +9,7 @@
 #import "DZRArtistDetailViewModel.h"
 #import "DZRRequestService.h"
 #import "DZRAlbum.h"
+#import "DZRTrackTableViewCellViewModel.h"
 
 @interface DZRArtistDetailViewModel()
 
@@ -38,7 +39,13 @@
             weakSelf.album = albums.firstObject;
             [weakSelf.requestService fetchAlbumTracksWithAlbumId:weakSelf.album.identifier completion:^(NSArray *trackList, NSError *error) {
                 if (trackList.count){
-                    weakSelf.tracks = trackList;
+                    NSMutableArray *list = [NSMutableArray array];
+                    for (DZRTrack *track in trackList) {
+                        DZRTrackTableViewCellViewModel *cellModel = [[DZRTrackTableViewCellViewModel alloc] initWithTrack:track];
+                        [list addObject:cellModel];
+                    }
+                    weakSelf.trackViewModels = list;
+//                    weakSelf.tracks = trackList;
                 }else{
                     weakSelf.error = error;
                 }

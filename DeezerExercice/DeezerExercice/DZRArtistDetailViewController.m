@@ -8,16 +8,16 @@
 
 #import "DZRArtistDetailViewController.h"
 #import "DZRAlbum.h"
-#import "DZRTrack.h"
 #import "DZRTrackTableViewCell.h"
 #import "DZRPlayer.h"
 #import "UIImageView+Async.h"
 #import "UIViewController+Error.h"
 #import "DZRArtistDetailViewModel.h"
+#import "DZRTrackTableViewCellViewModel.h"
 
 CGFloat const kDZRArtistDetailViewControllerCellHeight = 80.0;
 NSString *const kDZRArtistDetailViewControllerAlbumKey = @"album";
-NSString *const kDZRArtistDetailViewControllerTracksKey = @"tracks";
+NSString *const kDZRArtistDetailViewControllerTracksKey = @"trackViewModels";
 NSString *const kDZRArtistDetailViewControllerErrorKey = @"error";
 
 @interface DZRArtistDetailViewController () <DZRPlayerDelegate>
@@ -90,7 +90,7 @@ NSString *const kDZRArtistDetailViewControllerErrorKey = @"error";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.viewModel.tracks.count;
+    return self.viewModel.trackViewModels.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -98,8 +98,9 @@ NSString *const kDZRArtistDetailViewControllerErrorKey = @"error";
     static NSString *cellIdentifier = @"DZRTrackTableViewCellIdentifier";
     DZRTrackTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    DZRTrack *track = self.viewModel.tracks[indexPath.row];
-    [cell updateWithTitle:track.trackTitle];
+    DZRTrackTableViewCellViewModel *cellModel = self.viewModel.trackViewModels[indexPath.row];
+    cell.viewModel = cellModel;
+//    [cell updateWithTitle:track.trackTitle];
     if (![indexPath isEqual:self.currentSelectedIndexPath]){
         [cell stop];
     }else{
@@ -128,8 +129,8 @@ NSString *const kDZRArtistDetailViewControllerErrorKey = @"error";
         }
 
         self.currentSelectedIndexPath = indexPath;
-        DZRTrack *track = self.viewModel.tracks[indexPath.row];
-        [[DZRPlayer sharedPlayer] playWithUrl:track.trackUrl];
+        DZRTrackTableViewCellViewModel *cellModel = self.viewModel.trackViewModels[indexPath.row];
+        [[DZRPlayer sharedPlayer] playWithUrl:cellModel.url];
     }
 }
 

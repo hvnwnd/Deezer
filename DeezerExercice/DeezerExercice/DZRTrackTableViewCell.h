@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class DZRTrackTableViewCellViewModel;
 @interface DZRTrackTableViewCell : UITableViewCell
 
+@property (nonatomic) DZRTrackTableViewCellViewModel *viewModel;
 @property (nonatomic) BOOL isPlaying;
 - (void)updateWithTitle:(NSString *)title;
 - (void)playWithDuration:(NSTimeInterval)duration;

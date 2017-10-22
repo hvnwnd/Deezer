@@ -8,6 +8,7 @@
 
 #import "DZRTrackTableViewCell.h"
 #import "DZRTrackPreviewProgressView.h"
+#import "DZRTrackTableViewCellViewModel.h"
 
 @interface DZRTrackTableViewCell ()
 
@@ -17,6 +18,12 @@
 
 @end
 @implementation DZRTrackTableViewCell
+
+- (void)setViewModel:(DZRTrackTableViewCellViewModel *)viewModel{
+    _viewModel = viewModel;
+    self.trackTitle.text = viewModel.title;
+
+}
 
 - (void)updateWithTitle:(NSString *)title
 {
