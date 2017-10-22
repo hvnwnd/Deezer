@@ -47,13 +47,12 @@ NSString *const DZRTrackTableViewCellViewModelPlayFinishNotification = @"DZRTrac
     self.start = [DZRPlayer sharedPlayer].currentTime;
 }
 
-- (void)delayedSetValue{
-}
-
 - (BOOL)shouldResume
 {
     return self.start > 0;
 }
+
+#pragma mark - DZRPlayer Delegate
 
 - (void)DZRPlayerWillBegin:(DZRPlayer *)player duration:(NSTimeInterval)duration{
     self.duration = duration;

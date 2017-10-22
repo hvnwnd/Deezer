@@ -10,6 +10,11 @@
 #import "DZRTrackPreviewProgressView.h"
 #import "DZRTrackTableViewCellViewModel.h"
 
+NSString *const DZRTrackTableViewCellTitleKey = @"title";
+NSString *const DZRTrackTableViewCellImageKey = @"image";
+NSString *const DZRTrackTableViewCellPlayingKey = @"isPlaying";
+NSString *const DZRTrackTableViewCellStartKey = @"start";
+
 @interface DZRTrackTableViewCell ()
 
 @property (nonatomic, weak) IBOutlet UILabel *trackTitle;
@@ -19,21 +24,28 @@
 @end
 @implementation DZRTrackTableViewCell
 
+- (void)dealloc
+{
+    [self.viewModel removeObserver:self forKeyPath:DZRTrackTableViewCellTitleKey];
+    [self.viewModel removeObserver:self forKeyPath:DZRTrackTableViewCellImageKey];
+    [self.viewModel removeObserver:self forKeyPath:DZRTrackTableViewCellPlayingKey];
+    [self.viewModel removeObserver:self forKeyPath:DZRTrackTableViewCellStartKey];
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    if ([keyPath isEqualToString:@"title"]) {
+    if ([keyPath isEqualToString:DZRTrackTableViewCellTitleKey]) {
         self.trackTitle.text = self.viewModel.title;
-    }else if ([keyPath isEqualToString:@"image"]) {
+    }else if ([keyPath isEqualToString:DZRTrackTableViewCellImageKey]) {
         self.playImageView.image = self.viewModel.image;
-    }else if ([keyPath isEqualToString:@"isPlaying"]){
+    }else if ([keyPath isEqualToString:DZRTrackTableViewCellPlayingKey]){
         if (self.viewModel.isPlaying){
             [self.progressView animateWithDuration:self.viewModel.duration];
         }else{
             [self.progressView reset];
         }
-    }else if ([keyPath isEqualToString:@"start"]){
+    }else if ([keyPath isEqualToString:DZRTrackTableViewCellStartKey]){
         if ([self.viewModel shouldResume]){
-            NSLog(@"self %@", [NSThread callStackSymbols]);
             [self.progressView animateFromStart:self.viewModel.start withDuration:self.viewModel.duration];
         }
     } else {
@@ -43,11 +55,10 @@
 
 - (void)setViewModel:(DZRTrackTableViewCellViewModel *)viewModel{
     _viewModel = viewModel;
-    
-    [_viewModel addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:NULL];
-    [_viewModel addObserver:self forKeyPath:@"image" options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:NULL];
-    [_viewModel addObserver:self forKeyPath:@"isPlaying" options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:NULL];
-    [_viewModel addObserver:self forKeyPath:@"start" options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:NULL];
+    [_viewModel addObserver:self forKeyPath:DZRTrackTableViewCellTitleKey options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:NULL];
+    [_viewModel addObserver:self forKeyPath:DZRTrackTableViewCellImageKey options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:NULL];
+    [_viewModel addObserver:self forKeyPath:DZRTrackTableViewCellPlayingKey options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:NULL];
+    [_viewModel addObserver:self forKeyPath:DZRTrackTableViewCellStartKey options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew context:NULL];
 
 }
 
